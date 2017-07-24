@@ -7,18 +7,39 @@ public class GeneratingPoints : MonoBehaviour
 
     [SerializeField]
     private GameObject circlePrefab;
+    [SerializeField]
+    private Transform circlePrefabTransform;
+    [SerializeField]
+    private float mNumPointsEachAxis;
+    [SerializeField]
+    private float xAxisSpace = 1;
+    [SerializeField]
+    private float yAxisSpace = 1;
+    [SerializeField]
+    private float topLeftCircleX = 458.81f;
+    [SerializeField]
+    private float topLeftCircleY = 278.97f;
+    [SerializeField]
+    private Vector3 circleScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-    private int mNumPoints = 500;
-   //private GameObject[] Points;
+
+
+    //private GameObject[] Points;
 
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < mNumPoints; i+=25)
+        circlePrefabTransform.localScale = circleScale;
+        float x = 0;
+        float y = 0;
+        for (float i = 0; i < mNumPointsEachAxis; i++)
         {
-            for (int j = 0; j < mNumPoints; j+=25)
+            x += xAxisSpace;
+            y = 0;
+            for (float j = 0; j < mNumPointsEachAxis; j++)
             {
-                Instantiate(circlePrefab, new Vector3(i, j, -1), Quaternion.identity);
+                Instantiate(circlePrefab, new Vector3(topLeftCircleX + x, topLeftCircleY + y, -1), Quaternion.identity);
+                y -= yAxisSpace;
             }
         }
     }
