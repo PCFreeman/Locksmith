@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 3e2ea4924d2f0ca43a88230e446c45dd
 timeCreated: 1500928222
 licenseType: Free
@@ -8,6 +9,15 @@ guid: fe8f821cafac3794e82f08c6c51b3ccf
 timeCreated: 1500932531
 licenseType: Pro
 >>>>>>> 527f596ce4b9678265b3c88ac2ce2ee825ec9861
+=======
+guid: 020e18bfa5d298a40bb6baef99a91983
+timeCreated: 1500928227
+=======
+guid: fe8f821cafac3794e82f08c6c51b3ccf
+timeCreated: 1500932531
+>>>>>>> 527f596ce4b9678265b3c88ac2ce2ee825ec9861
+licenseType: Pro
+>>>>>>> b9f2ad4daf941e7038eaa18c6b0a5f9c3a78f326
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
