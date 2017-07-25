@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Firstscreen.cs" />
     <Compile Include="Assets\Scripts\GeneratePoints\GeneratingPoints.cs" />
     <Compile Include="Assets\Scripts\TouchManager\DrawTouch.cs" />
+    <Compile Include="Assets\Scripts\TouchManager\LineTouch.cs" />
     <Compile Include="Assets\Scripts\TouchManager\TouchLogic.cs" />
     <Compile Include="Assets\Scripts\TouchManager\TouchManager.cs" />
     <Compile Include="Assets\Scripts\TouchManager\TouchSence.cs" />
