@@ -8,11 +8,12 @@ public class DrawTouch : MonoBehaviour {
     private GameObject thisLine;
     private Vector3 startPosition;
     private Plane objectPlane;
+    private List<GameObject> pointsSelected;
 
 
     private void Start()
     {
-
+        pointsSelected = new List<GameObject>();
         objectPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
 
     }
@@ -53,7 +54,7 @@ public class DrawTouch : MonoBehaviour {
         {
             Debug.Log("TouchManager   " + TouchManager.mTouchManager.ToString());
             // Check if the line makes the corect shape
-            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle))
+            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.EquilateralTriangle3UP,pointsSelected))
             {
                 //Call the winning animation or add points or ...
             }
@@ -66,4 +67,12 @@ public class DrawTouch : MonoBehaviour {
 
         }
     }
+
+    public void SetSelectedPoint(GameObject point)
+    {
+        pointsSelected.Add(point);
+    }
+
+
+
 }

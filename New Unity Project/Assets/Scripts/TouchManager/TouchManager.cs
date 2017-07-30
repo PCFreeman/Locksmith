@@ -7,8 +7,7 @@ public class TouchManager : MonoBehaviour {
     public static TouchManager mTouchManager = null;
     
     public TouchLogic mTouchLogic;
-
-
+    public DrawTouch mDrawTouch = GameObject.Find("TouchManager").GetComponent<DrawTouch>();
 
 
     private void Awake()
