@@ -22,7 +22,7 @@ public class GeneratingPoints : MonoBehaviour
     [SerializeField]
     private Vector3 circleScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-
+    private GameObject[,] pointsArray;
 
     //private GameObject[] Points;
 
@@ -32,13 +32,13 @@ public class GeneratingPoints : MonoBehaviour
         circlePrefabTransform.localScale = circleScale;
         float x = 0;
         float y = 0;
-        for (float i = 0; i < mNumPointsEachAxis; i++)
+        for (int i = 0; i < mNumPointsEachAxis; i++)
         {
             x += xAxisSpace;
             y = 0;
-            for (float j = 0; j < mNumPointsEachAxis; j++)
+            for (int j = 0; j < mNumPointsEachAxis; j++)
             {
-                Instantiate(circlePrefab, new Vector3(topLeftCircleX + x, topLeftCircleY + y, -1), Quaternion.identity);
+                pointsArray[i, j] = (GameObject)Instantiate(circlePrefab, new Vector3(topLeftCircleX + x, topLeftCircleY + y, -1), Quaternion.identity);
                 y -= yAxisSpace;
             }
         }
