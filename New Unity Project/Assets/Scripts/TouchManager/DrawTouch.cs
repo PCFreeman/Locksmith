@@ -54,14 +54,32 @@ public class DrawTouch : MonoBehaviour {
         {
             Debug.Log("TouchManager   " + TouchManager.mTouchManager.ToString());
             // Check if the line makes the corect shape
-            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.EquilateralTriangle3UP,pointsSelected))
+            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle5X3YUP, pointsSelected))
             {
+
+                Debug.Log("Correct Shape");
+
+                Destroy(thisLine);
+
+                foreach(GameObject GO in pointsSelected)
+                {
+                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+                }
+
+
                 //Call the winning animation or add points or ...
             }
             else
             {
+                Debug.Log("Wrong Shape");
+
                 //Destroi the line , may add some stuff in future to make player know that made mistake
                 Destroy(thisLine);
+
+                foreach (GameObject GO in pointsSelected)
+                {
+                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+                }
             }
             
 
@@ -70,6 +88,9 @@ public class DrawTouch : MonoBehaviour {
 
     public void SetSelectedPoint(GameObject point)
     {
+        Debug.Log(" -----------    "+point.name.ToString());
+
+
         pointsSelected.Add(point);
     }
 
