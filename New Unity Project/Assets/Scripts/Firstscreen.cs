@@ -12,6 +12,7 @@ public class Firstscreen : MonoBehaviour {
     public GameObject TimedWindow;
     public GameObject ChallengeWindow;
     public GameObject ZenWindow;
+    public GameObject Setting;
 
     public void Endless()
         {
@@ -56,6 +57,11 @@ public class Firstscreen : MonoBehaviour {
     public void PlayZen()
     {
         SceneManager.LoadScene(4);
+    }
+    public void SettingMenu()
+    {
+        MenuButton.SetActive(false);
+        Setting.SetActive(true);
     }
     void Update () {
         if (Input.GetMouseButtonDown(0))
