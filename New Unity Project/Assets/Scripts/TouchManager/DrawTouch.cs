@@ -52,9 +52,12 @@ public class DrawTouch : MonoBehaviour {
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
         {
-            Debug.Log("TouchManager   " + TouchManager.mTouchManager.ToString());
+
+            pointsSelected = LineTouch.GetCollidedObjects();
+
+            Debug.Log("points selected = " + pointsSelected.ToString());
             // Check if the line makes the corect shape
-            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle5X3YUP, pointsSelected))
+            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle5X3YUp, ref pointsSelected))
             {
 
                 Debug.Log("Correct Shape");
@@ -66,7 +69,7 @@ public class DrawTouch : MonoBehaviour {
                     GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
                 }
 
-
+                pointsSelected.Clear();
                 //Call the winning animation or add points or ...
             }
             else
@@ -80,13 +83,15 @@ public class DrawTouch : MonoBehaviour {
                 {
                     GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
                 }
+
+                pointsSelected.Clear();
             }
             
 
         }
     }
 
-    public void SetSelectedPoint(GameObject point)
+    public void SetSelectedPoint(ref GameObject point)
     {
         Debug.Log(" -----------    "+point.name.ToString());
 

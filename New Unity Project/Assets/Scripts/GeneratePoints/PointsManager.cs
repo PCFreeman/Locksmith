@@ -156,18 +156,24 @@ public class PointsManager : MonoBehaviour {
 
                 pointsList.Add(pointTemp);  //Temp list
 
-                points.Add(pointsList);     //2D List
+                
 
                 pointsLines.Add(line);      //Line List
 
             }
 
-
+            points.Add(pointsList);     //2D List
         }
 
 
-            
-        
+        //for(int i = 0; i < points.Count;++i)
+        //{
+        //    for (int j = 0; j < points[i].Count; ++j)
+        //    {
+        //        Debug.Log("[" + i + "]" + "[" + j + "]" + points[i][j].transform.position.y);
+        //
+        //    }
+        //}
     }
 
 
@@ -178,7 +184,10 @@ public class PointsManager : MonoBehaviour {
 
     public float GetDistanceBetweenLines()
     {
-        return points[2][0].transform.position.x - points[0][0].transform.position.x;
+        //Debug.Log("P1  = " + points[2][0].transform.position.y.ToString() + points[2][0].transform.position.x.ToString());
+        //Debug.Log("P2  = " + points[0][0].transform.position.y.ToString() + points[0][0].transform.position.x.ToString());
+
+        return points[2][0].transform.position.y - points[0][0].transform.position.y;
     }
 
 

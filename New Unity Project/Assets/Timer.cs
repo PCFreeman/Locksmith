@@ -23,11 +23,15 @@ public class Timer : MonoBehaviour {
 
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-        text.text = "" + Mathf.Round(timeLeft);
-        if (timeLeft < 0)
-        {
        
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            text.text = "" + Mathf.Round(timeLeft);
+        }
+        else
+        {
+            //Finish the game
         }
     }
 }

@@ -5,13 +5,14 @@ using UnityEngine;
 public class TouchManager : MonoBehaviour {
 
     public static TouchManager mTouchManager = null;
-    
-    public TouchLogic mTouchLogic;
-    public DrawTouch mDrawTouch = GameObject.Find("TouchManager").GetComponent<DrawTouch>();
 
+    public TouchLogic mTouchLogic;
+    public DrawTouch mDrawTouch;
 
     private void Awake()
     {
+        mDrawTouch = GameObject.Find("TouchManager").GetComponent<DrawTouch>();
+
         //Check if instance already exist
         if (mTouchManager == null)
         { 
@@ -27,8 +28,7 @@ public class TouchManager : MonoBehaviour {
         //DontDestroyOnLoad(gameObject);
     }
 
-
-
+        
     // Use this for initialization
     void Start () {
         Debug.Log("[TouchManager]Manager successfully started.");
