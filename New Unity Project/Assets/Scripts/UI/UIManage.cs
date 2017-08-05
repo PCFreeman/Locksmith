@@ -5,19 +5,30 @@ using UnityEngine.UI;
 
 public class UIManage : MonoBehaviour {
 
-    private static UIManage instance;
+    public static UIManage mUiManage = null;
+
     public float timeLeft;
     public Text Timer;
     public Text Point;
     public GameObject Set;
-
     float Mins;
     float Secs;
-
-   public int Score=0;
+    public int Score=0;
  
+   private void Awake()
+    {
+        if(mUiManage==null)
+        {
+           mUiManage = this;
+         }
+        else if(mUiManage!=this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-    public void settingMenu()
+
+   public void settingMenu()
     {
         Set.SetActive(true);
         Time.timeScale = 0f;
@@ -28,15 +39,16 @@ public class UIManage : MonoBehaviour {
         Time.timeScale = 1f;
     }
  
-    public void AddScore(int pluse)
+   public void AddScore(int pluse)
     {
        Score=Score + pluse;
     }
-
-    public void AddTime(int T)
+   public void AddTime(int T)
     {
         timeLeft = timeLeft + T;
     }
+
+
 
     void Update()
     {
@@ -48,12 +60,11 @@ public class UIManage : MonoBehaviour {
         {
           timeLeft -= Time.deltaTime;
     
-                Timer.text = "" + Mins + ":" + Secs;
+                Timer.text = "    " + Mins + ":" + Secs;
         }
-
-        if(timeLeft==0)
+        else
         {
-            timeLeft = 0;
+
         }
     }
 }
