@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManage : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class UIManage : MonoBehaviour {
     public Text Timer;
     public Text Point;
     public GameObject Set;
+    public GameObject lose;
+
     float Mins;
     float Secs;
     public int Score=0;
@@ -38,7 +41,17 @@ public class UIManage : MonoBehaviour {
         Set.SetActive(false);
         Time.timeScale = 1f;
     }
- 
+   public void BacktoMainMenu()
+    {
+        SceneManager.LoadScene(0);
+       
+    }
+   public void Retry()
+    {
+        
+        SceneManager.LoadScene(2);
+     
+    }
    public void AddScore(int pluse)
     {
        Score=Score + pluse;
@@ -62,9 +75,10 @@ public class UIManage : MonoBehaviour {
     
                 Timer.text = "    " + Mins + ":" + Secs;
         }
-        else
+        else 
         {
-
+            lose.SetActive(true);
+        
         }
     }
 }
