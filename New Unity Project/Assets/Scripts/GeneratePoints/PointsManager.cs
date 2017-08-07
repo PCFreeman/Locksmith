@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PointsManager : MonoBehaviour {
@@ -17,12 +18,21 @@ public class PointsManager : MonoBehaviour {
     private List<GameObject> pointsLines;       // This controls the lines structures, not content
     private List<List<GameObject>> points;      //for [x][y]   ,  each X will represent a line and each Y will represent a point in a line X
 
+    private float ScreenXOffset;
+    private float ScreenYOffset;
 
 
     private void Awake()
     {
         isMovingUp = false;
         isMovingSides = false;
+
+        //Set x offset
+        ScreenXOffset = Screen.width / GameObject.Find("Canvas").GetComponent<CanvasScaler>().referenceResolution.x;
+
+        //Set y offset
+        ScreenYOffset = Screen.height / GameObject.Find("Canvas").GetComponent<CanvasScaler>().referenceResolution.y;
+        Debug.Log("Y = " + ScreenYOffset.ToString() + "    X = " + ScreenXOffset.ToString());
     }
     
 
@@ -47,11 +57,10 @@ public class PointsManager : MonoBehaviour {
     //Will genarate the Points Area
     private void GeneratePoints()
     {
+               
         //Helper variable
         int check = 0;
         
-
-
         //Initialize the List that will hold PointLines
         pointsLines = new List<GameObject>();
 
@@ -59,9 +68,14 @@ public class PointsManager : MonoBehaviour {
         points = new List<List<GameObject>>();
 
         //Instantiate Points container
-        pointsArea = (GameObject)Instantiate(pointsAreaPrefab, new Vector3(-20,0,-20), Quaternion.identity);
+        pointsArea = (GameObject)Instantiate(pointsAreaPrefab, new Vector3(Mathf.RoundToInt(-20 * ScreenXOffset), 0,-20), Quaternion.identity);
 
         pointsArea.name = "Points Area";
+
+        pointsArea.GetComponent<BoxCollider>().size = new Vector3(Mathf.RoundToInt((GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width) * (float)0.75),
+            Mathf.RoundToInt((GameObject.Find("Canvas").GetComponent<RectTransform>().rect.height) - 10.0f), pointsArea.GetComponent<BoxCollider>().size.z);
+
+
 
 
         //Variables to generate Points

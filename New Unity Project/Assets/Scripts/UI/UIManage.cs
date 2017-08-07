@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManage : MonoBehaviour {
 
-    private static UIManage instance;
+    public static UIManage instance;
     public float timeLeft;
     public Text Timer;
     public Text Point;
@@ -14,8 +14,29 @@ public class UIManage : MonoBehaviour {
     float Mins;
     float Secs;
 
-   public int Score=0;
- 
+    public int Score=0;
+
+    private void Awake()
+    {
+        //Start Score
+        GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
+
+        //Check if instance already exist
+        if (instance == null)
+        {
+            //if not, set instance to this
+            instance = this;
+        }
+        else if (instance != this) //If instance already exists and it's not this:
+        {
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a TouchManager.
+            Destroy(gameObject);
+        }
+        //Sets this to not be destroyed when reloading scene
+        //DontDestroyOnLoad(gameObject);
+    }
+
+   
 
     public void settingMenu()
     {
@@ -31,6 +52,7 @@ public class UIManage : MonoBehaviour {
     public void AddScore(int pluse)
     {
        Score=Score + pluse;
+        GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
     }
 
     public void AddTime(int T)
