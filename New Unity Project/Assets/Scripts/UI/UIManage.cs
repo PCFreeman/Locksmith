@@ -104,8 +104,8 @@ public class UIManage : MonoBehaviour {
         {
             OpenGameOverScreen();
 
-            GameObject.Find("FinalScore").GetComponent<Text>().text += Score.ToString();
-            GameObject.Find("HighScore").GetComponent<Text>().text += Score.ToString();
+            GameObject.Find("FinalScore").GetComponent<Text>().text = "Final Score:   " + Score.ToString();
+            GameObject.Find("HighScore").GetComponent<Text>().text = "High Score:   " + Score.ToString();
         }
     }
 }
