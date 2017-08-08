@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManage : MonoBehaviour {
-
+    
     public static UIManage instance;
+
+
     public float timeLeft;
     public Text Timer;
     public Text Point;
     public GameObject Set;
+    public GameObject mGameOverScreen;
 
     float Mins;
     float Secs;
 
-    public int Score=0;
+
+    public int Score;
 
     private void Awake()
     {
-        //Start Score
-        GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
 
         //Check if instance already exist
         if (instance == null)
@@ -34,31 +37,56 @@ public class UIManage : MonoBehaviour {
         }
         //Sets this to not be destroyed when reloading scene
         //DontDestroyOnLoad(gameObject);
-    }
 
-   
+        Time.timeScale = 1f;
+        //Start Score
+        Score = 0;
+
+        GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
+
+
+    }
 
     public void settingMenu()
     {
         Set.SetActive(true);
         Time.timeScale = 0f;
     }
-   public void SettingMenuBack()
+    public void SettingMenuBack()
     {
         Set.SetActive(false);
         Time.timeScale = 1f;
     }
- 
+    public void BacktoMainMenu()
+    {
+        SceneManager.LoadScene(0);
+       
+    }
+    public void Retry()
+    {
+        
+        SceneManager.LoadScene(2);
+     
+    }
     public void AddScore(int pluse)
     {
        Score=Score + pluse;
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
     }
-
     public void AddTime(int T)
     {
         timeLeft = timeLeft + T;
     }
+
+    public void OpenGameOverScreen()
+    {
+        //GameObject.Find("Canvas").SetActive(false);
+        mGameOverScreen.SetActive(true);
+        Time.timeScale = 0f;
+        GameObject.Find("SettingButton").GetComponent<Button>().enabled = false;
+        
+    }
+
 
     void Update()
     {
@@ -70,12 +98,14 @@ public class UIManage : MonoBehaviour {
         {
           timeLeft -= Time.deltaTime;
     
-                Timer.text = "" + Mins + ":" + Secs;
+                Timer.text = "    " + Mins + ":" + Secs;
         }
-
-        if(timeLeft==0)
+        else 
         {
-            timeLeft = 0;
+            OpenGameOverScreen();
+
+            GameObject.Find("FinalScore").GetComponent<Text>().text += Score.ToString();
+            GameObject.Find("HighScore").GetComponent<Text>().text += Score.ToString();
         }
     }
 }
