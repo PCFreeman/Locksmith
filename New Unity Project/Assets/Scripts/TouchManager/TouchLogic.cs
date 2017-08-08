@@ -367,6 +367,12 @@ public class TouchLogic {
             return false;
         }
 
+
+        //Check if shape was closed
+        if (points[0].transform.position != points[points.Count - 1].transform.position)
+        {
+            return false;
+        }
         //Debug.Log("Correct number of points!");
 
 
@@ -654,7 +660,7 @@ public class TouchLogic {
         //========================  Support Functions  ============================
         //=========================================================================
 
-        private int sortLine(GameObject GO1, GameObject GO2)
+    private int sortLine(GameObject GO1, GameObject GO2)
     {
 
         if (GO1 == null)

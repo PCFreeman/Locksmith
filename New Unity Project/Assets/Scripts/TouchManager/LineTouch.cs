@@ -11,15 +11,27 @@ public class LineTouch : MonoBehaviour {
     {
         Debug.Log("Collides!!");
         other.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.1f, 0.0f, 0.0f, 1.0f);
+        if (GOs.Contains(other.gameObject))
+        { 
         GOs.Add(other.gameObject);
-
+        }
         //TouchManager.mTouchManager.mDrawTouch.SetSelectedPoint(ref other.gameObject);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        other.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.1f, 0.0f, 0.0f, 1.0f);
+        if (GOs.Contains(other.gameObject))
+        {
+            GOs.Add(other.gameObject);
+        }
     }
 
     public static List<GameObject> GetCollidedObjects()
     {
         return GOs;
     }
+    
 
 
 }

@@ -20,8 +20,7 @@ public class PointsManager : MonoBehaviour {
 
     private float ScreenXOffset;
     private float ScreenYOffset;
-
-
+    
     private void Awake()
     {
         isMovingUp = false;
