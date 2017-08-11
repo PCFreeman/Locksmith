@@ -112,6 +112,7 @@ public class TouchManager : MonoBehaviour {
 
             mShapesInstantied[i].transform.SetParent(GameObject.Find("ShapeSpawnPlace").transform, false);
         }
+
         for(int i = 0; i < mShapesInstantied.Count; ++i)
         {
             int yPos = 0;
@@ -134,7 +135,7 @@ public class TouchManager : MonoBehaviour {
                     Debug.Assert(false, "[TouchManager] Num of shapes bigger than Max");
                     break;
             }
-            mShapesInstantied[i].transform.position = new Vector3(mShapesInstantied[i].transform.parent.transform.position.x, yPos, mShapesInstantied[i].transform.parent.transform.position.z);
+            mShapesInstantied[i].transform.position = new Vector3(mShapesInstantied[i].transform.parent.transform.position.x, yPos, mShapesInstantied[i].transform.parent.transform.position.z - 10);
 
         }
 
