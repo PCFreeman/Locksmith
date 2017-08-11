@@ -11,7 +11,6 @@ public class UIManage : MonoBehaviour {
 
     public float timeLeft;
     public Text Timer;
-    public Text Point;
     public GameObject Set;
     public GameObject mGameOverScreen;
 
@@ -64,9 +63,7 @@ public class UIManage : MonoBehaviour {
     }
     public void Retry()
     {
-        
         SceneManager.LoadScene(2);
-     
     }
     public void AddScore(int pluse)
     {
@@ -77,6 +74,7 @@ public class UIManage : MonoBehaviour {
     {
         timeLeft = timeLeft + T;
     }
+   
 
     public void OpenGameOverScreen()
     {
@@ -86,7 +84,10 @@ public class UIManage : MonoBehaviour {
         GameObject.Find("SettingButton").GetComponent<Button>().enabled = false;
         
     }
-
+    public void SetHighscore()
+    {
+        GameObject.Find("HNumber").GetComponent<Text>().text = " " + Score.ToString();
+    }
 
     void Update()
     {
