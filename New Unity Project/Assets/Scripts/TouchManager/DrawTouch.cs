@@ -104,7 +104,7 @@ public class DrawTouch : MonoBehaviour {
 
                //Destroi the line , may add some stuff in future to make player know that made mistake
                Destroy(thisLine);
-
+               Debug.Log("GOs 2 size = " + pointsSelected.Count.ToString());
                foreach (GameObject GO in pointsSelected)
                {
                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
