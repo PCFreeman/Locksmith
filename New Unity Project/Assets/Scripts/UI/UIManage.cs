@@ -18,7 +18,7 @@ public class UIManage : MonoBehaviour {
     float Secs;
 
 
-    public int Score;
+    int Score;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class UIManage : MonoBehaviour {
         Score = 0;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
-
+        
 
     }
 
@@ -86,20 +86,20 @@ public class UIManage : MonoBehaviour {
     }
     public void SetHighscore()
     {
-        GameObject.Find("HNumber").GetComponent<Text>().text = " " + Score.ToString();
+        GameObject.Find("HNumber").GetComponent<Text>().text = "     " + GameManager.mGameManager.GetHighScore().ToString();
     }
 
     void Update()
     {
+        
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
-  
 
         if (timeLeft>0)
         {
           timeLeft -= Time.deltaTime;
     
-                Timer.text = "    " + Mins + ":" + Secs;
+                Timer.text = " " + Mins + ":" + Secs;
         }
         else 
         {
@@ -110,5 +110,7 @@ public class UIManage : MonoBehaviour {
             GameObject.Find("FinalScore").GetComponent<Text>().text = "Final Score:   " + Score.ToString();
             GameObject.Find("HighScore").GetComponent<Text>().text = "High Score:   " + GameManager.mGameManager.GetHighScore().ToString();
         }
+        SetHighscore();
+
     }
 }
