@@ -448,7 +448,7 @@ public class TouchLogic {
 
 
         }
-        //Debug.Log("Line1 = " + Line1.Count.ToString() + "     Line2 = " + Line2.Count.ToString() + "    Line3 = " + Line3.Count.ToString());
+        Debug.Log("Line1 = " + Line1.Count.ToString() + "     Line2 = " + Line2.Count.ToString() + "    Line3 = " + Line3.Count.ToString());
 
 
 
@@ -461,7 +461,7 @@ public class TouchLogic {
              (Line1.Count == 1 && Line2.Count == 2 && Line3.Count == 5))
         {
 
-
+            
 
             List<List<GameObject>> LinesList = new List<List<GameObject>>();
 
@@ -532,14 +532,20 @@ public class TouchLogic {
             //Right
             if (isLeft == false)
             {
+
+                Debug.Log("Line1 x  = " + LinesList[0][0].transform.position.x.ToString());
+                Debug.Log("Line2 x  = " + LinesList[1][0].transform.position.x.ToString());
+                Debug.Log("Line3 x  = " + LinesList[2][0].transform.position.x.ToString());
+
+
                 //Check if Triangle is Right
-                if (LinesList[0][0].transform.position.x < LinesList[1][0].transform.position.x ||
-                    LinesList[0][0].transform.position.x < LinesList[2][0].transform.position.x ||
-                    LinesList[1][0].transform.position.x < LinesList[2][0].transform.position.x)
+                if (LinesList[0][0].transform.position.x > LinesList[1][0].transform.position.x ||
+                    LinesList[0][0].transform.position.x > LinesList[2][0].transform.position.x ||
+                    LinesList[1][0].transform.position.x > LinesList[2][0].transform.position.x)
                 {
                     return false;
                 }
-                //Debug.Log("First Check");
+                Debug.Log("First Check");
 
                 //Check Left Y distances
                 if ((LinesList[0][1].transform.position.y - LinesList[0][0].transform.position.y) != distanceBetweenPointsY ||
@@ -549,7 +555,7 @@ public class TouchLogic {
                 {
                     return false;
                 }
-                //Debug.Log("Last Check - 2");
+                Debug.Log("Last Check - 2");
 
 
                 //Check Middle Y distances
@@ -558,7 +564,7 @@ public class TouchLogic {
                     return false;
                 }
 
-                //Debug.Log("Last Check - 1");
+                Debug.Log("Last Check - 1");
                 //
                 //
                 //Debug.Log("1   = " + (LinesList[1][0].transform.position.y - LinesList[0][1].transform.position.y).ToString());
@@ -578,7 +584,7 @@ public class TouchLogic {
                     return false;
                 }
 
-                //Debug.Log("Last Check");
+                Debug.Log("Last Check");
 
                 if ((LinesList[2][0].transform.position.y != LinesList[0][2].transform.position.y) ||
                        ((LinesList[2][0].transform.position.x - LinesList[0][2].transform.position.x) != distanceBetweenPointsX * 2))
@@ -591,13 +597,13 @@ public class TouchLogic {
             else
             {
                 //Check if Triangle is Left
-                if (LinesList[0][0].transform.position.x > LinesList[1][0].transform.position.x ||
-                    LinesList[0][0].transform.position.x > LinesList[2][0].transform.position.x ||
-                    LinesList[1][0].transform.position.x > LinesList[2][0].transform.position.x)
+                if (LinesList[0][0].transform.position.x < LinesList[1][0].transform.position.x ||
+                    LinesList[0][0].transform.position.x < LinesList[2][0].transform.position.x ||
+                    LinesList[1][0].transform.position.x < LinesList[2][0].transform.position.x)
                 {
                     return false;
                 }
-                //Debug.Log("First Check");
+                Debug.Log("First Check");
 
                 //Check Right Y distances
                 if ((LinesList[0][1].transform.position.y - LinesList[0][0].transform.position.y) != distanceBetweenPointsY ||

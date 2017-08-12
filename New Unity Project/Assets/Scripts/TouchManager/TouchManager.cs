@@ -8,6 +8,8 @@ public class TouchManager : MonoBehaviour {
 
     public GameObject Triangle5x3Up;
     public GameObject Triangle5x3Down;
+    public GameObject Triangle5x3Right;
+    public GameObject Triangle5x3Left;
     public GameObject TriangleRectangle3UpLeft;
     public GameObject TriangleRectangle3DownLeft;
 
@@ -54,7 +56,7 @@ public class TouchManager : MonoBehaviour {
         mShapes = new List<GameObject>();
         mShapesList = new List<GameObject>();
         mShapesInstantied = new List<GameObject>(); ;
-        NumberOfShapesInstantiedMax = 4; 
+        NumberOfShapesInstantiedMax = 4;                //Number of Shapes showing in screen
         GenerateShapesList();
         InstantiateShapes();
     }
@@ -81,6 +83,8 @@ public class TouchManager : MonoBehaviour {
     {
         mShapes.Add(Triangle5x3Up);
         mShapes.Add(Triangle5x3Down);
+        mShapes.Add(Triangle5x3Right);
+        mShapes.Add(Triangle5x3Left);
         mShapes.Add(TriangleRectangle3UpLeft);
         mShapes.Add(TriangleRectangle3DownLeft);
         

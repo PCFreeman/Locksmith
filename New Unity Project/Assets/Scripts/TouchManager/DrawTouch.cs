@@ -68,10 +68,11 @@ public class DrawTouch : MonoBehaviour {
                      
            pointsSelected = LineTouch.GetCollidedObjects();
 
-           Debug.Log("points selected = " + pointsSelected.ToString());
-           // Check if the line makes the corect shape
-           if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchManager.mTouchManager.GetCurrentShape().GetComponent<Shapes>().GetShpeType(), ref pointsSelected))
-           {
+           Debug.Log("points selected = " + pointsSelected.ToString()); 
+            // Check if the line makes the corect shape
+            //if (TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle5X3YLeft, ref pointsSelected))
+            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchManager.mTouchManager.GetCurrentShape().GetComponent<Shapes>().GetShpeType(), ref pointsSelected))
+            {
 
                Debug.Log("Correct Shape");
                TouchManager.mTouchManager.DeleteCurrentShape(); //Delete current shape and Instantiate a new one
