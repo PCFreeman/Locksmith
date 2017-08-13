@@ -13,7 +13,7 @@ public class UIManage : MonoBehaviour {
     public Text Timer;
     public GameObject Set;
     public GameObject mGameOverScreen;
-
+    public Animator Timeplus;
     float Mins;
     float Secs;
 
@@ -73,6 +73,9 @@ public class UIManage : MonoBehaviour {
     public void AddTime(int T)
     {
         timeLeft = timeLeft + T;
+        GameObject.Find("PlusTime").SetActive(true);
+        Timeplus.Play("PlusTime", -1, 0f);
+        GameObject.Find("PlusTime").SetActive(false);
     }
    
 
