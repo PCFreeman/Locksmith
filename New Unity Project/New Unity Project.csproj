@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scripts\GeneratePoints\PointsManager.cs" />
     <Compile Include="Assets\Scripts\GeneratePoints\PointsMovement.cs" />
     <Compile Include="Assets\Scripts\Shapes.cs" />
+    <Compile Include="Assets\Scripts\TouchManager\Colliders.cs" />
     <Compile Include="Assets\Scripts\TouchManager\DrawTouch.cs" />
     <Compile Include="Assets\Scripts\TouchManager\LineTouch.cs" />
     <Compile Include="Assets\Scripts\TouchManager\TouchLogic.cs" />

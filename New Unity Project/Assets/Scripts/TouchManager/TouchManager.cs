@@ -12,12 +12,13 @@ public class TouchManager : MonoBehaviour {
     public GameObject Triangle5x3Left;
     public GameObject TriangleRectangle3UpLeft;
     public GameObject TriangleRectangle3DownLeft;
-
+    public List<GameObject> pointsSelected;
 
     //Touch Manager 
 
     public static TouchManager mTouchManager = null;
 
+    public Colliders mColliders;
     public TouchLogic mTouchLogic;
     public DrawTouch mDrawTouch;
     private List<GameObject> mShapes;           //All types of Shapes
@@ -28,7 +29,7 @@ public class TouchManager : MonoBehaviour {
 
     private void Awake()
     {
-        mDrawTouch = GameObject.Find("TouchManager").GetComponent<DrawTouch>();
+        //mDrawTouch = GameObject.Find("TouchManager").GetComponent<DrawTouch>();
 
         //Check if instance already exist
         if (mTouchManager == null)
@@ -50,24 +51,34 @@ public class TouchManager : MonoBehaviour {
     void Start () {
         Debug.Log("[TouchManager]Manager successfully started.");
 
+        mColliders = new Colliders();
         mTouchLogic = new TouchLogic();
         Debug.Log("TouchLogic   " + mTouchLogic.ToString());
 
+        pointsSelected = new List<GameObject>();
         mShapes = new List<GameObject>();
         mShapesList = new List<GameObject>();
-        mShapesInstantied = new List<GameObject>(); ;
+        mShapesInstantied = new List<GameObject>();
+
+        mDrawTouch.Initialize();
+        mColliders.Initialize();
+
         NumberOfShapesInstantiedMax = 4;                //Number of Shapes showing in screen
         GenerateShapesList();
         InstantiateShapes();
+
+        mColliders.mCurrentShape = GetCurrentShape();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        mDrawTouch.update();
 
 
 
-	}
+
+    }
 
     void OnApplicationQuit()
     {
@@ -106,6 +117,7 @@ public class TouchManager : MonoBehaviour {
 
         }
         Debug.Log("Size of Shapes List" + mShapesList.Count);
+        mShapes.Clear();
     }
 
     public void InstantiateShapes()

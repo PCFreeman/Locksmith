@@ -8,20 +8,20 @@ public class DrawTouch : MonoBehaviour {
     private GameObject thisLine;
     private Vector3 startPosition;
     private Plane objectPlane;
-    private List<GameObject> pointsSelected;
+    //private List<GameObject> pointsSelected;
     private bool LastShapeCorect;
 
 
-    private void Start()
+    public void Initialize()
     {
         LastShapeCorect = false;
-        pointsSelected = new List<GameObject>();
+        //pointsSelected = new List<GameObject>();
         objectPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
 
     }
 
     // Update is called once per frame
-    void Update()
+    public void update()
     {
 
         //This function can be use for Touch or mouse click
@@ -29,12 +29,12 @@ public class DrawTouch : MonoBehaviour {
         {
             if(LastShapeCorect == true)
             {
-                foreach (GameObject GO in pointsSelected)
+                foreach (GameObject GO in TouchManager.mTouchManager.pointsSelected)
                 {
                     GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
                 }
 
-                pointsSelected.Clear();
+                TouchManager.mTouchManager.pointsSelected.Clear();
                 LastShapeCorect = false;
             }
 
@@ -65,13 +65,13 @@ public class DrawTouch : MonoBehaviour {
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
         {
-                     
-           pointsSelected = LineTouch.GetCollidedObjects();
 
-           Debug.Log("points selected = " + pointsSelected.ToString()); 
+            TouchManager.mTouchManager.pointsSelected = LineTouch.GetCollidedObjects();
+
+           Debug.Log("points selected = " + TouchManager.mTouchManager.pointsSelected.ToString()); 
             // Check if the line makes the corect shape
             //if (TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle5X3YLeft, ref pointsSelected))
-            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchManager.mTouchManager.GetCurrentShape().GetComponent<Shapes>().GetShpeType(), ref pointsSelected))
+            if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchManager.mTouchManager.GetCurrentShape().GetComponent<Shapes>().GetShpeType(), ref TouchManager.mTouchManager.pointsSelected))
             {
 
                Debug.Log("Correct Shape");
@@ -80,7 +80,7 @@ public class DrawTouch : MonoBehaviour {
 
                Destroy(thisLine);
 
-               foreach(GameObject GO in pointsSelected)
+               foreach(GameObject GO in TouchManager.mTouchManager.pointsSelected)
                {
                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
                }
@@ -94,7 +94,11 @@ public class DrawTouch : MonoBehaviour {
                 UIManage.instance.AddTime(TouchManager.mTouchManager.GetCurrentShape().GetComponent<Shapes>().timeBonus);
 
 
+                TouchManager.mTouchManager.mColliders.mCurrentShape = TouchManager.mTouchManager.GetCurrentShape();
 
+
+                TouchManager.mTouchManager.mColliders.pointCount = 0;
+                //Reset Collidrrs size
 
                 //Call the winning animation or add points or ...
 
@@ -105,16 +109,19 @@ public class DrawTouch : MonoBehaviour {
 
                //Destroi the line , may add some stuff in future to make player know that made mistake
                Destroy(thisLine);
-               Debug.Log("GOs 2 size = " + pointsSelected.Count.ToString());
-               foreach (GameObject GO in pointsSelected)
+               Debug.Log("GOs 2 size = " + TouchManager.mTouchManager.pointsSelected.Count.ToString());
+               foreach (GameObject GO in TouchManager.mTouchManager.pointsSelected)
                {
                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
                }
 
-               pointsSelected.Clear();
-           }
-           
-               
+                TouchManager.mTouchManager.pointsSelected.Clear();
+
+                TouchManager.mTouchManager.mColliders.pointCount = 0;
+                //Reset Colliders size
+            }
+
+
         }
     }
 
@@ -123,7 +130,7 @@ public class DrawTouch : MonoBehaviour {
         Debug.Log(" -----------    "+point.name.ToString());
 
 
-        pointsSelected.Add(point);
+        TouchManager.mTouchManager.pointsSelected.Add(point);
     }
 
 

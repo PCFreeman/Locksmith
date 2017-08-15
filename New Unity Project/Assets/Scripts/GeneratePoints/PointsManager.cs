@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PointsManager : MonoBehaviour {
 
+    public static PointsManager mPointsManager = null;
+
     public int numberLines;
     public int numberPointsInLine;
     public bool isMovingUp;
@@ -16,13 +18,26 @@ public class PointsManager : MonoBehaviour {
 
     private GameObject pointsArea;
     private List<GameObject> pointsLines;       // This controls the lines structures, not content
-    private List<List<GameObject>> points;      //for [x][y]   ,  each X will represent a line and each Y will represent a point in a line X
+    public List<List<GameObject>> points;      //for [x][y]   ,  each X will represent a line and each Y will represent a point in a line X
 
     private float ScreenXOffset;
     private float ScreenYOffset;
     
     private void Awake()
     {
+
+        if (mPointsManager == null)
+        {
+            //if not, set instance to this
+            mPointsManager = this;
+        }
+        else if (mPointsManager != this) //If instance already exists and it's not this:
+        {
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a TouchManager.
+            Destroy(gameObject);
+        }
+        
+
         isMovingUp = false;
         isMovingSides = false;
 
