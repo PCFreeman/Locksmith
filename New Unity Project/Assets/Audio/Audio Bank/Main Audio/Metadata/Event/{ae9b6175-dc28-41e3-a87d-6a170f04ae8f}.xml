@@ -31,6 +31,9 @@
         <relationship name="timeline">
             <destination>{2baf4538-01be-4882-bc8d-1a7aaa175dae}</destination>
         </relationship>
+        <relationship name="tags">
+            <destination>{3e9a8ccb-eef4-4fb7-bbb6-b672134e2891}</destination>
+        </relationship>
         <relationship name="banks">
             <destination>{8e12c6c8-ade7-45e2-8963-87e2097192ce}</destination>
         </relationship>

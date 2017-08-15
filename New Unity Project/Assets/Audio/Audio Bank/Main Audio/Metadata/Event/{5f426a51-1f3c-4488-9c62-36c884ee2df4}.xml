@@ -48,6 +48,9 @@
             <destination>{bc6ba2ad-01c6-4c2a-8a02-b6f3eaa1f395}</destination>
             <destination>{d3d91aa6-2bc9-4086-82b4-28e1a675bb84}</destination>
         </relationship>
+        <relationship name="tags">
+            <destination>{3e9a8ccb-eef4-4fb7-bbb6-b672134e2891}</destination>
+        </relationship>
         <relationship name="banks">
             <destination>{8e12c6c8-ade7-45e2-8963-87e2097192ce}</destination>
         </relationship>
@@ -161,6 +164,7 @@
             <destination>{da1d7e1d-ff5e-4aee-9abe-aa1fe30156e1}</destination>
             <destination>{81555cde-3245-47be-97bb-4893ecf0b352}</destination>
             <destination>{585470aa-664a-4a4a-8abf-6ac72f0d9cbc}</destination>
+            <destination>{b90a6eec-9a3d-4e8b-ba1a-feb84435bc6e}</destination>
         </relationship>
     </object>
     <object class="GameParameter" id="{bc6ba2ad-01c6-4c2a-8a02-b6f3eaa1f395}">
@@ -503,7 +507,7 @@
     </object>
     <object class="TransitionRegion" id="{9c48f785-612f-4c90-ba82-fa1d84d73d23}">
         <property name="position">
-            <value>60.447795264593161</value>
+            <value>62.427538248083735</value>
         </property>
         <property name="length">
             <value>1.9797429834905742</value>
@@ -642,7 +646,7 @@
             <value>3.2040397039318833</value>
         </property>
         <property name="quantizationInterval">
-            <value>5</value>
+            <value>6</value>
         </property>
         <relationship name="triggerConditions">
             <destination>{72429ed2-47dc-47a8-b5a5-69b20da4229d}</destination>
@@ -724,6 +728,20 @@
         </relationship>
         <relationship name="destination">
             <destination>{e66f668f-6000-453a-9580-17b716a0cb03}</destination>
+        </relationship>
+    </object>
+    <object class="LoopRegion" id="{b90a6eec-9a3d-4e8b-ba1a-feb84435bc6e}">
+        <property name="position">
+            <value>62.427538248083735</value>
+        </property>
+        <property name="length">
+            <value>1.97974298349056</value>
+        </property>
+        <relationship name="timeline">
+            <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
+        </relationship>
+        <relationship name="markerTrack">
+            <destination>{20a7480c-0417-4732-a184-4e5c4ce8d49d}</destination>
         </relationship>
     </object>
     <object class="MixerBusEffectChain" id="{2cf1bf3f-065c-4b24-8ad0-7afb7fb282d2}">
