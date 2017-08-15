@@ -15,10 +15,10 @@
     <object class="GroupTrack" id="{4806b72f-a7a4-4dea-ae48-7c8781fa6b36}"/>
     <object class="Timeline" id="{8193633c-3efb-4116-8de0-2a23169207b3}">
         <property name="cursorPosition">
-            <value>2.3999999999999999</value>
+            <value>0</value>
         </property>
         <property name="uiLastRulerScaleRatio">
-            <value>0.0064000000000000003</value>
+            <value>0.0025353773584905659</value>
         </property>
         <property name="uiLastHorizontalScrollBarValue">
             <value>258</value>
