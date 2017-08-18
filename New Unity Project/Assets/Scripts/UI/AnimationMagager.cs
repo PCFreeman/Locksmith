@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class AnimationMagager : MonoBehaviour {
 
-    private Animation mAnime;
     Vector3 pp;
+    private Animation pTime;
+    public GameObject t1;
+    public GameObject t2;
+    public GameObject t3;
+    public GameObject t4;
+    public GameObject t5;
+    public GameObject t6;
+    public GameObject t7;
+    public GameObject t8;
+    public GameObject t9;
+
     public static AnimationMagager mAnimation = null;
     int mPoint;
     int mTimebonus;
+    int m1, m2;
+
+ 
     private void Awake()
     {
 
@@ -29,7 +42,7 @@ public class AnimationMagager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        mAnime = GetComponent<Animation>();
+        pTime = GetComponent<Animation>();
         
 	}
 	
@@ -42,13 +55,21 @@ public class AnimationMagager : MonoBehaviour {
         // get point position
         // play animation to correct position
         Vector3 pp = point.transform.position;
-        mAnime.transform.position = pp;
-        mAnime.Play("PlusTime");
+        mTimebonus = currentshape.GetComponent<Shapes>().points;
+        m1 = mTimebonus.ToString()[0];
+        m2 = mTimebonus.ToString()[1];
 
-        mPoint=currentshape.GetComponent<Shapes>().points;
-        mPoint.ToString();
-
-        
+        if(m1==0)
+        {
+            Debug.Log("No time for this shape");
+        }
+        else if(m1==1)
+        {
+            GameObject P1 = Instantiate(t1, pp,transform.rotation);
+            pTime["1"].time = 5.0f;
+            P1.GetComponent<Animation>().Play();
+            
+        }
     }
     void ScoreAnimation(ref GameObject point, ref GameObject currentshape)
     {
