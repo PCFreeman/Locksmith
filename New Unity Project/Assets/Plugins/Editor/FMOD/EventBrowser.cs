@@ -645,6 +645,7 @@ namespace FMODUnity
 
             float hoffset = isNarrow ? 15 : 300;
             float voffset = isNarrow ? 50 : 10;
+            object meterOnObj = EditorGUIUtility.Load("FMOD/LevelMeter.png");
             Texture meterOn = EditorGUIUtility.Load("FMOD/LevelMeter.png") as Texture;
             Texture meterOff = EditorGUIUtility.Load("FMOD/LevelMeterOff.png") as Texture;
             float[] metering = EditorUtils.GetMetering();
