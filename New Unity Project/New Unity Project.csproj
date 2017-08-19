@@ -76,6 +76,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Fmod Assets\GoogleVR\Scripts\Audio\FmodGvrAudio.cs" />
@@ -112,6 +118,7 @@
     <Compile Include="Assets\Scripts\UI\BackGround.cs" />
     <Compile Include="Assets\Scripts\UI\Firstscreen.cs" />
     <Compile Include="Assets\Scripts\UI\InGameSetting.cs" />
+    <Compile Include="Assets\Scripts\UI\ScreenResolution.cs" />
     <Compile Include="Assets\Scripts\UI\UIManage.cs" />
   </ItemGroup>
   <ItemGroup>
