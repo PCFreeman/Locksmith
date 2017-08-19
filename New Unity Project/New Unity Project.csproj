@@ -76,6 +76,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="New Unity Project.Plugins.csproj">
@@ -102,7 +108,6 @@
     <Compile Include="Assets\Scripts\UI\InGameSetting.cs" />
     <Compile Include="Assets\Scripts\UI\ScreenResolution.cs" />
     <Compile Include="Assets\Scripts\UI\UIManage.cs" />
-    <Compile Include="Assets\TimerSoundControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\Asset\{60d88351-a2c2-41dd-8d42-d2e5ec447dba}.xml" />
