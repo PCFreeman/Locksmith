@@ -5,15 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIManage : MonoBehaviour {
-    
+
+    FMODUnity.StudioEventEmitter emitter;
+
     public static UIManage instance;
 
-
+    public float timeMax;
     public float timeLeft;
     public Text Timer;
     public GameObject Set;
     public GameObject mGameOverScreen;
-    public Animator Timeplus;
     float Mins;
     float Secs;
 
@@ -37,13 +38,14 @@ public class UIManage : MonoBehaviour {
         //Sets this to not be destroyed when reloading scene
         //DontDestroyOnLoad(gameObject);
 
+        var target = GameObject.Find("Timer");
+        emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
+
         Time.timeScale = 1f;
         //Start Score
         Score = 0;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
-        
-
     }
 
     public void settingMenu()
@@ -72,10 +74,8 @@ public class UIManage : MonoBehaviour {
     }
     public void AddTime(int T)
     {
+        timeMax = timeMax + T;
         timeLeft = timeLeft + T;
-        GameObject.Find("PlusTime").SetActive(true);
-        Timeplus.Play("PlusTime", -1, 0f);
-        GameObject.Find("PlusTime").SetActive(false);
     }
    
 
@@ -98,14 +98,33 @@ public class UIManage : MonoBehaviour {
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
 
-        if (timeLeft>0)
+        if (Secs > 20)
         {
-          timeLeft -= Time.deltaTime;
-    
-                Timer.text = " " + Mins + ":" + Secs;
+            emitter.SetParameter("Decider", 0);
         }
-        else 
+        else if (Secs < 20 && Secs > 10)
         {
+            emitter.SetParameter("Decider", 7.51f);
+        }
+        else if (Secs < 10 && Secs > 0)
+        {
+            emitter.SetParameter("Decider", 9.01f);
+        }
+
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+
+            Timer.text = " " + Mins + ":" + Secs;
+        }
+        else if (timeLeft > -1 && timeLeft < 0)
+        {
+            timeLeft -= Time.deltaTime;
+
+            emitter.SetParameter("Decider", 9.90f);
+        }
+        else
+        {            
             OpenGameOverScreen();
 
             GameManager.mGameManager.SetHighScore(Score);
