@@ -98,7 +98,7 @@ public class UIManage : MonoBehaviour {
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
 
-        if (Secs > 20)
+        if (Secs >= 20)
         {
             emitter.SetParameter("Decider", 0);
         }
@@ -106,7 +106,7 @@ public class UIManage : MonoBehaviour {
         {
             emitter.SetParameter("Decider", 7.51f);
         }
-        else if (Secs < 10 && Secs > 0)
+        else if (Secs <= 10 && Secs > 0)
         {
             emitter.SetParameter("Decider", 9.01f);
         }
