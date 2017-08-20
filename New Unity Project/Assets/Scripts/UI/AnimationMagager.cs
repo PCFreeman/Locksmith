@@ -31,8 +31,8 @@ public class AnimationMagager : MonoBehaviour
     private void Awake()
     {
         //test
-        //StartCoroutine(Move(test, test.transform.position, EndPositionTime, sp));
-        //StartCoroutine(Move(test2, test.transform.position+new Vector3(45,0,0), EndPositionTime+new Vector3(45,0, 0), sp));
+        StartCoroutine(Move(test, test.transform.position, EndPositionTime, sp));
+        StartCoroutine(Move(test2, test.transform.position+new Vector3(45,0,0), EndPositionTime+new Vector3(45,0, 0), sp));
         //StartCoroutine(Move(test, test.transform.position, EndPositionScore, sp));
         //StartCoroutine(Move(test2, test.transform.position+new Vector3(45,0,0), EndPositionScore + new Vector3(45,0, 0), sp));
 
