@@ -8,10 +8,9 @@ public class DrawTouch : MonoBehaviour {
     public GameObject linePrefab;
     public GameObject lineColliderPrefab;
     private GameObject thisLine;
-    private List<GameObject> lineColliders;
     private Vector3 startPosition;
     private Plane objectPlane;
-    //private List<GameObject> pointsSelected;
+    private List<GameObject> collidersList;
     private bool LastShapeCorect;
 
 
@@ -21,8 +20,7 @@ public class DrawTouch : MonoBehaviour {
         //pointsSelected = new List<GameObject>();
         objectPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
 
-        lineColliders = new List<GameObject>();
-
+        collidersList = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -68,13 +66,46 @@ public class DrawTouch : MonoBehaviour {
                 
                 thisLine.transform.position = mRay.GetPoint(rayDistance);
 
-                //coll.GetComponent<BoxCollider>().
+                if (startPosition.x == thisLine.transform.position.x && startPosition.y == thisLine.transform.position.y)
+                {
+                    //do nothing they are in same position
+                }
+                else if (startPosition.x == thisLine.transform.position.x && startPosition.y != thisLine.transform.position.y)
+                {
+                    //Vertical Line
+
+                    float distance = thisLine.transform.position.y - startPosition.y;
+
+                    coll.transform.position = new Vector3(startPosition.x, (distance * 0.5f) + startPosition.y, startPosition.z);
+                    coll.GetComponent<BoxCollider>().size = new Vector3(1.0f , distance, 1.0f);                  
+
+                }
+                else if (startPosition.x != thisLine.transform.position.x && startPosition.y == thisLine.transform.position.y)
+                {
+                    //Horizontal Line
+
+                    float distance = thisLine.transform.position.x - startPosition.x;
+
+                    coll.transform.position = new Vector3((distance * 0.5f) + startPosition.x, startPosition.y, startPosition.z);
+                    coll.GetComponent<BoxCollider>().size = new Vector3(distance, 1.0f, 1.0f);
+
+                }
+                else
+                {
+                    float distance = GetPointsDistance(startPosition, thisLine.transform.position);
+
+                    coll.transform.position = new Vector3((distance * 0.5f) + startPosition.x, startPosition.y, startPosition.z);
+                    coll.GetComponent<BoxCollider>().size = new Vector3(distance, 1.0f, 1.0f);
+
+                    coll.GetComponent<BoxCollider>().transform.Rotate(0.0f, 0.0f, GetRotation(startPosition, thisLine.transform.position));
+                }
+                
 
             }
 
+            startPosition = thisLine.transform.position;
 
-            lineColliders.Add(coll);
-
+            collidersList.Add(coll);
 
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
@@ -172,7 +203,7 @@ public class DrawTouch : MonoBehaviour {
         float xDistance = finalPos.x - initialPos.x;
         float yDistance = finalPos.y - initialPos.y;
 
-        return Mathf.Atan2(yDistance, xDistance) * 180 / Mathf.PI; ;
+        return (Mathf.Atan2(yDistance, xDistance) * Mathf.Rad2Deg);
 
     }
 
