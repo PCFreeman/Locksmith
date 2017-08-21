@@ -93,9 +93,14 @@ public class DrawTouch : MonoBehaviour {
                 else
                 {
                     float distance = GetPointsDistance(startPosition, thisLine.transform.position);
+                    float distanceX = thisLine.transform.position.x - startPosition.x;
+                    float distanceY = thisLine.transform.position.y - startPosition.y;
 
-                    coll.transform.position = new Vector3((distance * 0.5f) + startPosition.x, startPosition.y, startPosition.z);
+                    coll.transform.position = new Vector3((distanceX * 0.5f) + startPosition.x, (distanceY * 0.5f) + startPosition.y, startPosition.z);
                     coll.GetComponent<BoxCollider>().size = new Vector3(distance, 1.0f, 1.0f);
+
+
+                    Debug.Log("Rotation = " + GetRotation(startPosition, thisLine.transform.position).ToString());
 
                     coll.GetComponent<BoxCollider>().transform.Rotate(0.0f, 0.0f, GetRotation(startPosition, thisLine.transform.position));
                 }
