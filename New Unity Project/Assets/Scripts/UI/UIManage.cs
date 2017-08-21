@@ -45,6 +45,8 @@ public class UIManage : MonoBehaviour {
         Score = 1;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
+
+        //Elrick's Code
         var target = GameObject.Find("Timer");
         emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
     }
@@ -99,13 +101,14 @@ public class UIManage : MonoBehaviour {
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
 
-
+        
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
 
             Timer.text = " " + Mins + ":" + Secs;
-
+            
+            //Elric's code
             if (timeLeft > 20)
             {
                 emitter.SetParameter("Decider", 0);
