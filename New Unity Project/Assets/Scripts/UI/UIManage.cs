@@ -38,14 +38,15 @@ public class UIManage : MonoBehaviour {
         //Sets this to not be destroyed when reloading scene
         //DontDestroyOnLoad(gameObject);
 
-        var target = GameObject.Find("Timer");
-        emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
+       
 
         Time.timeScale = 1f;
         //Start Score
-        Score = 0;
+        Score = 1;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
+        var target = GameObject.Find("Timer");
+        emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
     public void settingMenu()
@@ -98,7 +99,8 @@ public class UIManage : MonoBehaviour {
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
 
-        if (Secs > 20)
+<<<<<<< HEAD
+        if (Secs >= 20)
         {
             emitter.SetParameter("Decider", 0);
         }
@@ -106,16 +108,32 @@ public class UIManage : MonoBehaviour {
         {
             emitter.SetParameter("Decider", 7.51f);
         }
-        else if (Secs < 10 && Secs > 0)
+        else if (Secs <= 10 && Secs > 0)
         {
             emitter.SetParameter("Decider", 9.01f);
         }
+=======
+     
+>>>>>>> b86fa3acb5879b5efc9c04262af221998c356383
 
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
 
             Timer.text = " " + Mins + ":" + Secs;
+
+            if (timeLeft > 20)
+            {
+                emitter.SetParameter("Decider", 0);
+            }
+            else if (Secs < 20 && Secs > 10)
+            {
+                emitter.SetParameter("Decider", 7.51f);
+            }
+            else if (Secs < 10 && Secs > 0)
+            {
+                emitter.SetParameter("Decider", 9.01f);
+            }
         }
         else if (timeLeft > -1 && timeLeft < 0)
         {

@@ -446,11 +446,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{eb1042ed-6500-470b-9518-f466d1d466af}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{8b6fa058-671f-4361-8aaf-1462336bdd1c}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{eb1042ed-6500-470b-9518-f466d1d466af}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -469,11 +469,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{56471b16-0f86-4199-b24d-115f3f40810a}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{3fa6c99a-50e4-4622-8698-44fcf866c593}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{56471b16-0f86-4199-b24d-115f3f40810a}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -492,11 +492,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{c9f6ce9b-6425-48ac-b8c5-197b60b372da}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{e66f668f-6000-453a-9580-17b716a0cb03}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{c9f6ce9b-6425-48ac-b8c5-197b60b372da}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -512,11 +512,11 @@
         <property name="length">
             <value>1.9797429834905742</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{d67458bf-5ca2-466f-9fff-1df6a4ee2107}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{b0ad6229-cd5e-4138-9e28-e3e396320782}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{d67458bf-5ca2-466f-9fff-1df6a4ee2107}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -602,11 +602,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{d6024ed2-b8b1-4b1f-afbc-23a2a7af8076}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{b0ad6229-cd5e-4138-9e28-e3e396320782}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{d6024ed2-b8b1-4b1f-afbc-23a2a7af8076}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -625,11 +625,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{63e0a33a-4447-4456-b355-113ad36bb960}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{b0ad6229-cd5e-4138-9e28-e3e396320782}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{63e0a33a-4447-4456-b355-113ad36bb960}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -648,11 +648,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{72429ed2-47dc-47a8-b5a5-69b20da4229d}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{8b6fa058-671f-4361-8aaf-1462336bdd1c}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{72429ed2-47dc-47a8-b5a5-69b20da4229d}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -671,11 +671,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{07d785dc-1c44-47ae-8057-c5317e24f8aa}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{3fa6c99a-50e4-4622-8698-44fcf866c593}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{07d785dc-1c44-47ae-8057-c5317e24f8aa}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -694,11 +694,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{3f4038a6-ca46-4a37-8ba6-cd333baec337}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{e66f668f-6000-453a-9580-17b716a0cb03}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{3f4038a6-ca46-4a37-8ba6-cd333baec337}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
@@ -717,11 +717,11 @@
         <property name="quantizationInterval">
             <value>6</value>
         </property>
-        <relationship name="triggerConditions">
-            <destination>{15c8a938-242d-4a16-af80-d0100a847e80}</destination>
-        </relationship>
         <relationship name="destination">
             <destination>{e66f668f-6000-453a-9580-17b716a0cb03}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{15c8a938-242d-4a16-af80-d0100a847e80}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{8f3a52d1-5109-4665-8c95-3bd892e2d1f5}</destination>
