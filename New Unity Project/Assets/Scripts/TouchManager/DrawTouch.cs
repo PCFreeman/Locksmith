@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DrawTouch : MonoBehaviour {
 
     public GameObject linePrefab;
+    public GameObject lineColliderPrefab;
     private GameObject thisLine;
+    private List<GameObject> lineColliders;
     private Vector3 startPosition;
     private Plane objectPlane;
     //private List<GameObject> pointsSelected;
@@ -17,6 +20,8 @@ public class DrawTouch : MonoBehaviour {
         LastShapeCorect = false;
         //pointsSelected = new List<GameObject>();
         objectPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+
+        lineColliders = new List<GameObject>();
 
     }
 
@@ -52,15 +57,24 @@ public class DrawTouch : MonoBehaviour {
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || (Input.GetMouseButton(0)))
         {
-
+            GameObject coll = (GameObject)Instantiate(lineColliderPrefab, this.transform.position, Quaternion.identity);
+               
             Ray mRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             //Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);           //Use This for Mouse test
 
             float rayDistance;
             if (objectPlane.Raycast(mRay, out rayDistance))    //This check the contact of RayCast with plane and return the distance
             {
+                
                 thisLine.transform.position = mRay.GetPoint(rayDistance);
+
+                //coll.GetComponent<BoxCollider>().
+
             }
+
+
+            lineColliders.Add(coll);
+
 
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
@@ -73,6 +87,17 @@ public class DrawTouch : MonoBehaviour {
             //if (TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchLogic.Shapes.Triangle5X3YLeft, ref pointsSelected))
             if(TouchManager.mTouchManager.mTouchLogic.checkShapes(TouchManager.mTouchManager.GetCurrentShape().GetComponent<Shapes>().GetShpeType(), ref TouchManager.mTouchManager.pointsSelected))
             {
+                GameObject curShape = new GameObject();
+                GameObject firstPoint = new GameObject();
+
+                curShape = TouchManager.mTouchManager.GetCurrentShape();
+                firstPoint = TouchManager.mTouchManager.pointsSelected[0];
+
+                Debug.Log("..........." +curShape.name);
+                Debug.Log("***********" + firstPoint.name);
+
+                //AnimationMagager.mAnimation.ScoreAnimation( ref firstPoint, ref curShape);
+                //AnimationMagager.mAnimation.TimeAnimation(ref firstPoint, ref curShape);
 
                Debug.Log("Correct Shape");
                TouchManager.mTouchManager.DeleteCurrentShape(); //Delete current shape and Instantiate a new one
@@ -133,6 +158,23 @@ public class DrawTouch : MonoBehaviour {
         TouchManager.mTouchManager.pointsSelected.Add(point);
     }
 
+    private float GetPointsDistance(Vector3 initialPos, Vector3 finalPos)
+    {
+        float xDistance = finalPos.x - initialPos.x;
+        float yDistance = finalPos.y - initialPos.y;
+
+        return Mathf.Sqrt((xDistance* xDistance) + (yDistance* yDistance));
+        
+    }
+
+    private float GetRotation(Vector3 initialPos, Vector3 finalPos)
+    {
+        float xDistance = finalPos.x - initialPos.x;
+        float yDistance = finalPos.y - initialPos.y;
+
+        return Mathf.Atan2(yDistance, xDistance) * 180 / Mathf.PI; ;
+
+    }
 
 
 }
