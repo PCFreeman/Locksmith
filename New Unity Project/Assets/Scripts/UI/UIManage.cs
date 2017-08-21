@@ -47,6 +47,13 @@ public class UIManage : MonoBehaviour {
         Score = 1;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
+<<<<<<< HEAD
+=======
+
+        //Elrick's Code
+        var target = GameObject.Find("Timer");
+        emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
+>>>>>>> 38a6d37ba69cf741a44bbe9786a11602764da91b
     }
 
     public void SettingMenu()
@@ -100,6 +107,7 @@ public class UIManage : MonoBehaviour {
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
 
+<<<<<<< HEAD
         if (timeLeft > 20)
         {
             deciderAmount = 0f;
@@ -118,11 +126,31 @@ public class UIManage : MonoBehaviour {
             emitter.SetParameterValueByIndex(0, deciderAmount);
         }
 
+=======
+        
+>>>>>>> 38a6d37ba69cf741a44bbe9786a11602764da91b
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
 
             Timer.text = " " + Mins + ":" + Secs;
+<<<<<<< HEAD
+=======
+            
+            //Elric's code
+            if (timeLeft > 20)
+            {
+                emitter.SetParameter("Decider", 0);
+            }
+            else if (Secs < 20 && Secs > 10)
+            {
+                emitter.SetParameter("Decider", 7.51f);
+            }
+            else if (Secs < 10 && Secs > 0)
+            {
+                emitter.SetParameter("Decider", 9.01f);
+            }
+>>>>>>> 38a6d37ba69cf741a44bbe9786a11602764da91b
         }
         else if (timeLeft > -1 && timeLeft < 0)
         {
