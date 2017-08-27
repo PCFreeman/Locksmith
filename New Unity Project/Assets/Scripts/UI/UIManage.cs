@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class UIManage : MonoBehaviour {
 
     FMODUnity.StudioEventEmitter emitter;
-    float deciderAmount = 0;
 
     public static UIManage instance;
 
@@ -38,25 +37,21 @@ public class UIManage : MonoBehaviour {
         }
         //Sets this to not be destroyed when reloading scene
         //DontDestroyOnLoad(gameObject);
-        
-        var target = GameObject.Find("Timer");
-        emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
+
+       
 
         Time.timeScale = 1f;
         //Start Score
         Score = 1;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
-<<<<<<< HEAD
-=======
 
         //Elrick's Code
         var target = GameObject.Find("Timer");
         emitter = target.GetComponent<FMODUnity.StudioEventEmitter>();
->>>>>>> 38a6d37ba69cf741a44bbe9786a11602764da91b
     }
 
-    public void SettingMenu()
+    public void settingMenu()
     {
         Set.SetActive(true);
         Time.timeScale = 0f;
@@ -102,40 +97,16 @@ public class UIManage : MonoBehaviour {
 
     void Update()
     {
-        //emitter.GetComponent<FMODUnity.StudioParameterTrigger>().TriggerParameters();
-
+        
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
 
-<<<<<<< HEAD
-        if (timeLeft > 20)
-        {
-            deciderAmount = 0f;
-        }
-        else if (timeLeft <= 20 && timeLeft > 10)
-        {
-            deciderAmount = 7.51f;
-        }
-        else if (timeLeft <= 10 && timeLeft > 0)
-        {
-            deciderAmount = 9.01f;
-        }
-
-        if (timeLeft > -1)
-        {
-            emitter.SetParameterValueByIndex(0, deciderAmount);
-        }
-
-=======
         
->>>>>>> 38a6d37ba69cf741a44bbe9786a11602764da91b
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
 
             Timer.text = " " + Mins + ":" + Secs;
-<<<<<<< HEAD
-=======
             
             //Elric's code
             if (timeLeft > 20)
@@ -150,21 +121,20 @@ public class UIManage : MonoBehaviour {
             {
                 emitter.SetParameter("Decider", 9.01f);
             }
->>>>>>> 38a6d37ba69cf741a44bbe9786a11602764da91b
         }
         else if (timeLeft > -1 && timeLeft < 0)
         {
             timeLeft -= Time.deltaTime;
 
-            deciderAmount = 9.91f;
+            emitter.SetParameter("Decider", 9.90f);
         }
         else
-        {
+        {            
             OpenGameOverScreen();
 
             GameManager.mGameManager.SetHighScore(Score);
 
-            GameObject.Find("FinalScore").GetComponent<Text>().text = "Final Score:   " + Score.ToString();
+            GameObject.Find("Score").GetComponent<Text>().text = "Final Score:   " + Score.ToString();
             GameObject.Find("HighScore").GetComponent<Text>().text = "High Score:   " + GameManager.mGameManager.GetHighScore().ToString();
         }
         SetHighscore();
