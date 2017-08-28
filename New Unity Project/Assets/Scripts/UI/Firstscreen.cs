@@ -16,11 +16,11 @@ public class Firstscreen : MonoBehaviour {
     public GameObject Mode;
     
 	//Peter's Code cliksound
-	private AudioController mAudio;
+	//private AudioController mAudio;
 	void Start()
 	{
 		//Peter's Code cliksound
-		mAudio = GameObject.Find ("SFX").GetComponent<AudioController> ();
+		//mAudio = GameObject.Find ("SFX").GetComponent<AudioController> ();
 	}
 
     public void ModMenu()
@@ -74,7 +74,8 @@ public class Firstscreen : MonoBehaviour {
 	//Peter's code play SFX
 	public void PlaySFX()
 	{
-		mAudio.ClickSFX ();
+		//mAudio.ClickSFX ();
+		AudioController.sInstance.ClickSFX ();
 	}
 
     public void PlayZen()
