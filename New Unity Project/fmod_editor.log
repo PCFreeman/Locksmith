@@ -14,7 +14,7 @@
 [LOG] SystemI::init                            : create the stream thread
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000000004E35C0F8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000000003628D888 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -22,33 +22,12 @@
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] SoundI::release                          : timer_slow (000000001619EEB8)
-[LOG] SoundI::release                          : remove stream samples. (000000001619EEB8)
-[LOG] SoundI::release                          :     timer_slow (00000000116136F8)
-[LOG] SoundI::release                          :     done
-[LOG] SoundI::release                          : release subsounds. (000000001619EEB8)
-[LOG] SoundI::release                          :     timer_slow (000000001619D8C8)
-[LOG] SoundI::release                          :     done
-[LOG] SoundI::release                          : release codec. (000000001619EEB8)
-[LOG] SoundI::release                          : done
-[LOG] SoundI::release                          :  (0000000016153608)
-[LOG] SoundI::release                          : release subsounds. (0000000016153608)
-[LOG] SoundI::release                          :     time_end_poof (0000000011614A78)
-[LOG] SoundI::release                          :     done
-[LOG] SoundI::release                          : release codec. (0000000016153608)
-[LOG] SoundI::release                          : done
-[LOG] SoundI::release                          :  (0000000016151218)
-[LOG] SoundI::release                          : release subsounds. (0000000016151218)
-[LOG] SoundI::release                          :     timer_end_bell (0000000011613A38)
-[LOG] SoundI::release                          :     done
-[LOG] SoundI::release                          : release codec. (0000000016151218)
-[LOG] SoundI::release                          : done
-[LOG] SoundI::release                          :  (00000000161500D8)
-[LOG] SoundI::release                          : release subsounds. (00000000161500D8)
-[LOG] SoundI::release                          :     timer_end (0000000011613D78)
-[LOG] SoundI::release                          :     done
-[LOG] SoundI::release                          : release codec. (00000000161500D8)
-[LOG] SoundI::release                          : done
+[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
+[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
+[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
+[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
+[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 3
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
@@ -67,13 +46,6 @@
 [LOG] SystemI::close                           : Free channel pool.
 [LOG] SystemI::close                           : done.
 
-[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] Manager::readBank                        : fileversion = 88, compatVersion = 86 (oldest = 44, newest = 88)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 3
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -88,8 +60,5 @@
 [LOG] SystemI::close                           : Free software output.
 [LOG] SystemI::close                           : Free emulated output.
 [LOG] SystemI::close                           : Free channel pool.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
 [LOG] SystemI::close                           : done.
 
-[LOG] System::create                           : Header version = 1.09.06. Current version = 1.09.06.
