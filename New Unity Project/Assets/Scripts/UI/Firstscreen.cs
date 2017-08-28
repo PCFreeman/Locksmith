@@ -49,7 +49,6 @@ public class Firstscreen : MonoBehaviour {
     {
         Mode.SetActive(false);
         ZenWindow.SetActive(true);
-
     }
     public void CloseButton()
     {
@@ -71,10 +70,19 @@ public class Firstscreen : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
     }
+
+	//Peter's code play SFX
+	public void PlaySFX()
+	{
+		mAudio.ClickSFX ();
+	}
+
     public void PlayZen()
     {
         SceneManager.LoadScene(4);
     }
+
+
     public void SettingMenu()
     {
         if (!Setting.activeInHierarchy)
@@ -90,16 +98,17 @@ public class Firstscreen : MonoBehaviour {
         }
        
     }
-
     void Update () {
         if (LogininMenu.activeInHierarchy)
-            { 
+        { 
             if (Input.GetMouseButtonDown(0))
             {
                 LogininMenu.SetActive(false);
                 Mainmenu.SetActive(true);
             }
-            }
+         }
+
+
     }
 
 }
