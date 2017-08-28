@@ -15,6 +15,13 @@ public class Firstscreen : MonoBehaviour {
     public GameObject Setting;
     public GameObject Mode;
     
+	//Peter's Code cliksound
+	private AudioController mAudio;
+	void Start()
+	{
+		//Peter's Code cliksound
+		mAudio = GameObject.Find ("SFX").GetComponent<AudioController> ();
+	}
 
     public void ModMenu()
     {
@@ -22,10 +29,11 @@ public class Firstscreen : MonoBehaviour {
         Mode.SetActive(true);
     }
     public void Endless()
-        {
+    {
         Mode.SetActive(false);
         EndlessWindow.SetActive(true);
-        }//Those are the button in main menu
+
+    }//Those are the button in main menu
     public void Timed()
     {
         Mode.SetActive(false);
@@ -35,11 +43,13 @@ public class Firstscreen : MonoBehaviour {
     {
         Mode.SetActive(false);
         ChallengeWindow.SetActive(true);
+
     }
     public void Zen()
     {
         Mode.SetActive(false);
         ZenWindow.SetActive(true);
+
     }
     public void CloseButton()
     {

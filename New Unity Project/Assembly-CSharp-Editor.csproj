@@ -59,6 +59,7 @@
      <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\AudioFile\{9193bd96-e018-470f-8ae5-ef660b67ad00}.xml" />
      <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\Bank\{8e12c6c8-ade7-45e2-8963-87e2097192ce}.xml" />
      <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\AudioFile\{7e73c72a-af62-4843-a6e1-38899e21200e}.xml" />
+     <None Include="Assets\Audio\SFX\Notes.txt" />
      <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\EventFolder\{4d6d6961-e57d-45c8-b34f-1201784c0b7d}.xml" />
      <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\Tags.xml" />
      <None Include="Assets\Audio\Audio Bank\Main Audio\Metadata\Event\{fe816ace-0a89-4587-ae7b-6c14ad989768}.xml" />
