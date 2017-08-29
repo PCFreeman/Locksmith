@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.09.00">
     <object class="Event" id="{fe816ace-0a89-4587-ae7b-6c14ad989768}">
-        <relationship name="selectables">
-            <destination>{bf459a00-466e-4966-8e78-54b02e8e3380}</destination>
-        </relationship>
         <relationship name="uiLastParameterSelection">
             <destination>{f72cda82-0b76-4e74-a2a1-ee868570b30e}</destination>
         </relationship>
@@ -14,19 +11,8 @@
     <object class="MarkerTrack" id="{f3e4b664-baab-41e4-bea6-3b293b864da8}"/>
     <object class="GroupTrack" id="{bf459a00-466e-4966-8e78-54b02e8e3380}"/>
     <object class="Timeline" id="{f72cda82-0b76-4e74-a2a1-ee868570b30e}">
-        <property name="cursorPosition">
-            <value>0.19103773584905659</value>
-        </property>
         <property name="uiLastRulerScaleRatio">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <value>0.0014150943396226414</value>
-=======
-            <value>0.0019187986651835371</value>
->>>>>>> 9109c5ff8445e50d3a7542b842f859d3756fbeab
-=======
-            <value>0.0019187986651835371</value>
->>>>>>> 9109c5ff8445e50d3a7542b842f859d3756fbeab
+            <value>0.0023103581055063534</value>
         </property>
     </object>
     <object class="EventMixerMaster" id="{68888894-c5fa-4115-9073-355c58bbb15f}">
