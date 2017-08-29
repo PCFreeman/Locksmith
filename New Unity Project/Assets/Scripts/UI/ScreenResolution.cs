@@ -8,6 +8,7 @@ public class ScreenResolution : MonoBehaviour
 {
 
     public RectTransform rt;
+    public RectTransform shapeSpawnPlace;
 
     void Awake()
     {
@@ -15,11 +16,13 @@ public class ScreenResolution : MonoBehaviour
         //Under World Space the after change value will change to the Screen.Width and Screen.Height, however the image size still don't change for some reason.
         Debug.Log("Hi from Screen Resolution!");
         rt = GetComponent<RectTransform>();
-        Debug.Log("RectTransfor width = " + rt.rect.width);
-        Debug.Log("RectTransfor height = " + rt.rect.height);
+        shapeSpawnPlace = GameObject.Find("ShapeSpawnPlace").GetComponent<RectTransform>();
+        //Debug.Log("RectTransform width = " + rt.rect.width);
+        //Debug.Log("RectTransform height = " + rt.rect.height);
         rt.sizeDelta = new Vector2(Screen.width, Screen.height);
-        Debug.Log("RectTransfor X After change =" + rt.rect.width);
-        Debug.Log("RectTransfor Y After change = " + rt.rect.height);
+        shapeSpawnPlace.sizeDelta = new Vector2(Screen.width / 8.0f, Screen.height);
+        //Debug.Log("RectTransform X After change =" + rt.rect.width);
+        //Debug.Log("RectTransform Y After change = " + rt.rect.height);
     }
     // Use this for initialization
     void Start()

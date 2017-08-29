@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.09.00">
     <object class="Event" id="{fe816ace-0a89-4587-ae7b-6c14ad989768}">
+        <relationship name="selectables">
+            <destination>{bf459a00-466e-4966-8e78-54b02e8e3380}</destination>
+        </relationship>
         <relationship name="uiLastParameterSelection">
             <destination>{f72cda82-0b76-4e74-a2a1-ee868570b30e}</destination>
         </relationship>
@@ -11,8 +14,15 @@
     <object class="MarkerTrack" id="{f3e4b664-baab-41e4-bea6-3b293b864da8}"/>
     <object class="GroupTrack" id="{bf459a00-466e-4966-8e78-54b02e8e3380}"/>
     <object class="Timeline" id="{f72cda82-0b76-4e74-a2a1-ee868570b30e}">
+        <property name="cursorPosition">
+            <value>0.19103773584905659</value>
+        </property>
         <property name="uiLastRulerScaleRatio">
-            <value>0.02461033634126333</value>
+<<<<<<< HEAD
+            <value>0.0014150943396226414</value>
+=======
+            <value>0.0019187986651835371</value>
+>>>>>>> 9109c5ff8445e50d3a7542b842f859d3756fbeab
         </property>
     </object>
     <object class="EventMixerMaster" id="{68888894-c5fa-4115-9073-355c58bbb15f}">
@@ -22,7 +32,7 @@
     </object>
     <object class="MixerBusEffectChain" id="{6cce44bb-763e-482b-afbc-a94e9a2743e3}"/>
     <object class="MixerBusPanner" id="{ccc72fed-ff83-445e-9178-80f0dbedbdfc}"/>
-    <object class="SingleSound" id="{3a76129f-3ec2-4125-aada-6b9193d5f9f5}"/>
+    <object class="SingleSound" id="{0b5b85af-5eff-458a-accf-f70c7db5c0ed}"/>
     <object class="EventMixerGroup" id="{518e67ca-65be-46c9-8a42-7fa12c719599}"/>
     <object class="MixerBusEffectChain" id="{99894d53-4c8a-482b-b7bf-4486b05d11a7}"/>
     <object class="MixerBusPanner" id="{73f1bf2d-e990-42aa-94da-010e82c5a531}"/>
@@ -31,5 +41,6 @@
     <object class="MixerBusPanner" id="{85e7f194-ea04-4d74-afbb-503fc65f0a3d}"/>
     <object class="MixerBusFader" id="{6c73f141-0422-40cc-9f5b-570e35b2c977}"/>
     <object class="ThreeEQEffect" id="{5e02a92e-daa0-427c-a164-13a596845254}"/>
+    <object class="LimiterEffect" id="{0da2b49a-d5cb-4cb0-9bb4-9a2669089ce7}"/>
     <object class="MixerBusFader" id="{a2a80031-1007-4540-92f9-1147a3ae2ec6}"/>
 </objects>
