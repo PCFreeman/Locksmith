@@ -15,6 +15,8 @@ public class UIManage : MonoBehaviour {
     public Text Timer;
     public GameObject Set;
     private GameObject mGameOverScreen;
+    public GameObject mG1;
+    public GameObject mG2;
     float Mins;
     float Secs;
 
@@ -25,7 +27,7 @@ public class UIManage : MonoBehaviour {
     {
 		//Peter:Shuffle codes around debugging gameoverscreen score
 		mGameOverScreen = GameObject.Find ("GameOverScreen");
-		//mGameOverScreen.SetActive (false);
+		mGameOverScreen.SetActive (false);
 
         //Check if instance already exist
         if (instance == null)
@@ -48,7 +50,7 @@ public class UIManage : MonoBehaviour {
          //Score = 1;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
-		//mGameOverScreen.SetActive (false);
+
 
         //Elrick's Code
         var target = GameObject.Find("Timer");
@@ -90,9 +92,18 @@ public class UIManage : MonoBehaviour {
     {
         //GameObject.Find("Canvas").SetActive(false);
         mGameOverScreen.SetActive(true);
+        Debug.Log("Gameover");
+        if (mGameOverScreen.activeInHierarchy)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                mG1.SetActive(false);
+                mG2.SetActive(true);
+            }
+        }
 
-		//Peter:Shuffle codes around debugging gameoverscreen score
-		GameManager.mGameManager.SetHighScore(Score);
+        //Peter:Shuffle codes around debugging gameoverscreen score
+        GameManager.mGameManager.SetHighScore(Score);
 		GameObject.Find("Score").GetComponent<Text>().text = "Final Score:   " + Score.ToString();
 		GameObject.Find("HighScore").GetComponent<Text>().text = "High Score:    " + GameManager.mGameManager.GetHighScore().ToString();
 
@@ -117,25 +128,25 @@ public class UIManage : MonoBehaviour {
 
 			Timer.text = " " + Mins + ":" + Secs;
             
-			//Elric's code
-			if (timeLeft > 20)
-            {
-                emitter.SetParameter("Decider", 0);
-            }
-            else if (Secs < 20 && Secs > 10)
-            {
-                emitter.SetParameter("Decider", 7.51f);
-            }
-            else if (Secs < 10 && Secs > 0)
-            {
-                emitter.SetParameter("Decider", 9.01f);
-            }
-        }
-        else if (timeLeft > -1 && timeLeft < 0)
-        {
-            timeLeft -= Time.deltaTime;
+			////Elric's code
+			//if (timeLeft > 20)
+   //         {
+   //             emitter.SetParameter("Decider", 0);
+   //         }
+   //         else if (Secs < 20 && Secs > 10)
+   //         {
+   //             emitter.SetParameter("Decider", 7.51f);
+   //         }
+   //         else if (Secs < 10 && Secs > 0)
+   //         {
+   //             emitter.SetParameter("Decider", 9.01f);
+   //         }
+   //     }
+   //     else if (timeLeft > -1 && timeLeft < 0)
+   //     {
+   //         timeLeft -= Time.deltaTime;
 
-            emitter.SetParameter("Decider", 9.90f);
+   //         emitter.SetParameter("Decider", 9.90f);
         }
         else
         {            
