@@ -5,14 +5,13 @@ using UnityEngine;
 public class TouchManager : MonoBehaviour {
 
     //All shapes go here
-
+    
     public GameObject Triangle5x3Up;
     public GameObject Triangle5x3Down;
     public GameObject Triangle5x3Right;
     public GameObject Triangle5x3Left;
     public GameObject TriangleRectangle3UpLeft;
     public GameObject TriangleRectangle3DownLeft;
-    public List<GameObject> pointsSelected;
 
     //Touch Manager 
 
@@ -27,9 +26,15 @@ public class TouchManager : MonoBehaviour {
     private List<GameObject> mShapesInstantied;
     private uint NumberOfShapesInstantiedMax;
 
+
+    public List<GameObject> pointsSelected;
+    private List<GameObject> GOs;
+
+
     private void Awake()
     {
         //mDrawTouch = GameObject.Find("TouchManager").GetComponent<DrawTouch>();
+        GOs = new List<GameObject>();
 
         //Check if instance already exist
         if (mTouchManager == null)
@@ -63,7 +68,7 @@ public class TouchManager : MonoBehaviour {
         mDrawTouch.Initialize();
         mColliders.Initialize();
 
-        NumberOfShapesInstantiedMax = 4;                //Number of Shapes showing in screen
+        NumberOfShapesInstantiedMax = 5;                //Number of Shapes showing in screen
         GenerateShapesList();
         InstantiateShapes();
 
@@ -147,6 +152,9 @@ public class TouchManager : MonoBehaviour {
                 case 3:
                     yPos = -198;
                     break;
+                case 4:
+                    yPos = -330;
+                    break;
                 default:
                     Debug.Assert(false, "[TouchManager] Num of shapes bigger than Max");
                     break;
@@ -160,6 +168,11 @@ public class TouchManager : MonoBehaviour {
 
     }
 
+    public List<GameObject> GetShapesIniatialized()  // ==================     Freeman use it /////// Move shapes 132 px up          /////    TouchManager.mTouchManager.GetShapesIniatialized();
+    {
+        return mShapesInstantied;
+    }
+
 
     public GameObject GetCurrentShape()       ///Make it work
     {
@@ -170,7 +183,7 @@ public class TouchManager : MonoBehaviour {
     {
         Destroy(mShapesInstantied[0]);
         mShapesInstantied.Remove(mShapesInstantied[0]);
-        mShapesList.Remove(mShapesList[0]);
+        mShapesList.RemoveAt(0);
         InstantiateShapes();
 
         if(mShapesList.Count <= 5)
@@ -178,6 +191,16 @@ public class TouchManager : MonoBehaviour {
             GenerateShapesList();
         }
 
+    }
+
+    public void AddGameObject(GameObject GO)
+    {
+        GOs.Add(GO);
+    }
+
+    public List<GameObject> GetCollidedObjects()
+    {
+        return GOs;
     }
 
 
