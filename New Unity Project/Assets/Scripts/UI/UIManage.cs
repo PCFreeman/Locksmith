@@ -25,7 +25,7 @@ public class UIManage : MonoBehaviour {
     {
 		//Peter:Shuffle codes around debugging gameoverscreen score
 		mGameOverScreen = GameObject.Find ("GameOverScreen");
-		mGameOverScreen.SetActive (false);
+		//mGameOverScreen.SetActive (false);
 
         //Check if instance already exist
         if (instance == null)
