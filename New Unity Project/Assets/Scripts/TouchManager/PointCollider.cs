@@ -17,7 +17,7 @@ public class PointCollider : MonoBehaviour {
         { 
             if(this.gameObject.GetComponent<SpriteRenderer>().color == new Color(0.1f, 0.0f, 0.0f, 1.0f)
                 && this.gameObject != GOs[0]
-                && GOs[GOs.Count] != GOs[0])
+                && GOs[GOs.Count-1] != GOs[0])
             {
                 return;
             }

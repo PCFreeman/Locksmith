@@ -149,6 +149,8 @@ public class DrawTouch : MonoBehaviour {
                 AnimationMagager.mAnimation.TimeAnimation(ref firstPoint, ref curShape);
 
                Debug.Log("Correct Shape");
+
+               AnimationMagager.mAnimation.ShapeMoveOut(TouchManager.mTouchManager.GetShapesIniatialized());
                TouchManager.mTouchManager.DeleteCurrentShape(); //Delete current shape and Instantiate a new one
 
 
