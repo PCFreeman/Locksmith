@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AnimationMagager : MonoBehaviour
 {
-    public GameObject test;
-    public GameObject test2;
+    //public GameObject test;
+    //public GameObject test2;
     [SerializeField]
     public Vector3 EndPositionTime;
     public Vector3 EndPositionScore;
     Vector3 pp;
-    private Animator pTime;
+    Vector3 ShapePosition;
     public GameObject t0;
     public GameObject t1;
     public GameObject t2;
@@ -22,7 +22,7 @@ public class AnimationMagager : MonoBehaviour
     public GameObject t8;
     public GameObject t9;
     public int sp;
-
+    public int ShapeMoveSpeed;
     public static AnimationMagager mAnimation = null;
     int mTimebonus;
     int mScoreBonus;
@@ -53,13 +53,13 @@ public class AnimationMagager : MonoBehaviour
 
         digits = new List<int>();
         digits2 = new List<int>();
+
     }
 
     // Use this for initialization
     void Start()
     {
-        pTime = GetComponent<Animator>();
-
+        
     }
 
     // Update is called once per frame
@@ -78,8 +78,18 @@ public class AnimationMagager : MonoBehaviour
         }
         point.transform.position = ePosition;
         Destroy(point);
-
     }
+    IEnumerator MoveShape(GameObject Shape, Vector3 sPosition, Vector3 ePosition, float speed)
+    {
+        float starttime = Time.time;
+        while (Time.time < starttime + speed)
+        {
+            Shape.transform.position = Vector3.Lerp(sPosition, ePosition, (Time.time - starttime) / speed);
+            yield return null;
+        }
+        Shape.transform.position = ePosition;
+    }
+
     public void TimeAnimation(ref GameObject point, ref GameObject currentshape)
     {
         Vector3 pp = point.transform.position;
@@ -410,7 +420,6 @@ public class AnimationMagager : MonoBehaviour
             }
         }
         }
-
 
     public void ScoreAnimation(ref GameObject point, ref GameObject currentshape)
     {
@@ -859,4 +868,14 @@ public class AnimationMagager : MonoBehaviour
         //
         //}
     }
+
+    public void ShapeMoveOut(List<GameObject> ShapeList)
+    {
+        StartCoroutine(MoveShape(ShapeList[0], ShapeList[0].transform.position, ShapeList[0].transform.position + new Vector3(200,0,0),ShapeMoveSpeed));
+        for (int i = 1; i < 5; i++)
+        {
+            StartCoroutine(MoveShape(ShapeList[i], ShapeList[i].transform.position,ShapeList[i].transform.position + new Vector3(0, 132, 0), ShapeMoveSpeed));
+        }
+    }
+
 }
