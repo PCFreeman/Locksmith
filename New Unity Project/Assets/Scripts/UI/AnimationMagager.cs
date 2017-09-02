@@ -29,13 +29,10 @@ public class AnimationMagager : MonoBehaviour
     private List<int> digits;
     private List<int> digits2;
 
+
+
     private void Awake()
     {
-        //test
-        //StartCoroutine(Move(test, test.transform.position, EndPositionTime, sp));
-        //StartCoroutine(Move(test, test.transform.position, EndPositionTime, sp));
-        //StartCoroutine(Move(test2, test.transform.position+new Vector3(45,0,0), EndPositionTime+new Vector3(45,0, 0), sp));
-        //StartCoroutine(Move(test2, test.transform.position+new Vector3(45,0,0), EndPositionScore + new Vector3(45,0, 0), sp));
 
         //Check if instance already exist
         if (mAnimation == null)
@@ -53,6 +50,7 @@ public class AnimationMagager : MonoBehaviour
 
         digits = new List<int>();
         digits2 = new List<int>();
+
 
     }
 
