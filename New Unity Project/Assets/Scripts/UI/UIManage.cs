@@ -112,32 +112,30 @@ public class UIManage : MonoBehaviour {
         
         Mins = Mathf.FloorToInt(timeLeft / 60f);
         Secs = Mathf.FloorToInt(timeLeft % 60f);
-
-        
-		if (timeLeft > 0) {
+        //Elric's code LEAVE HERE
+        if (timeLeft > 20)
+        {
+            emitter.SetParameterValueByIndex(0, 0);
+        }
+        else if (Secs < 20 && Secs > 10)
+        {
+            emitter.SetParameterValueByIndex(0, 7.51f);
+        }
+        else if (Secs < 10 && Secs > 0)
+        {
+            emitter.SetParameterValueByIndex(0, 9.01f);
+        }
+        // LEAVE CODE HERE LINES 115-128 NO ENWRAPPING IF STATEMENT
+        if (timeLeft > 0) {
 			timeLeft -= Time.deltaTime;
 
 			Timer.text = " " + Mins + ":" + Secs;
-            
-			////Elric's code
-			//if (timeLeft > 20)
-   //         {
-   //             emitter.SetParameter("Decider", 0);
-   //         }
-   //         else if (Secs < 20 && Secs > 10)
-   //         {
-   //             emitter.SetParameter("Decider", 7.51f);
-   //         }
-   //         else if (Secs < 10 && Secs > 0)
-   //         {
-   //             emitter.SetParameter("Decider", 9.01f);
-   //         }
-   //     }
-   //     else if (timeLeft > -1 && timeLeft < 0)
-   //     {
-   //         timeLeft -= Time.deltaTime;
+        }
+        else if (timeLeft > -1 && timeLeft < 0)
+        {
+            timeLeft -= Time.deltaTime;
 
-   //         emitter.SetParameter("Decider", 9.90f);
+            emitter.SetParameterValueByIndex(0, 9.90f);
         }
         else
         {        
