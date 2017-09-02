@@ -13,22 +13,20 @@ public class UIManage : MonoBehaviour {
     public float timeMax;
     public float timeLeft;
     public Text Timer;
+    public Text FhScore;
+    public Text FScore;
     public GameObject Set;
-    private GameObject mGameOverScreen;
+    public GameObject mGameOverScreen;
     public GameObject mG1;
     public GameObject mG2;
     float Mins;
     float Secs;
 
 
-    public int Score;
+    private int Score;
 
     private void Awake()
     {
-		//Peter:Shuffle codes around debugging gameoverscreen score
-		mGameOverScreen = GameObject.Find ("GameOverScreen");
-		mGameOverScreen.SetActive (false);
-
         //Check if instance already exist
         if (instance == null)
         {
@@ -43,11 +41,11 @@ public class UIManage : MonoBehaviour {
         //Sets this to not be destroyed when reloading scene
         //DontDestroyOnLoad(gameObject);
 
-       
 
+        SetHighscore();
         Time.timeScale = 1f;
         //Start Score
-         //Score = 1;
+         Score = 103;
 
         GameObject.Find("Number").GetComponent<Text>().text = Score.ToString();
 
@@ -87,12 +85,9 @@ public class UIManage : MonoBehaviour {
         timeLeft = timeLeft + T;
     }
    
-
     public void OpenGameOverScreen()
     {
-        //GameObject.Find("Canvas").SetActive(false);
         mGameOverScreen.SetActive(true);
-        Debug.Log("Gameover");
         if (mGameOverScreen.activeInHierarchy)
         {
             if (Input.GetMouseButtonDown(0))
@@ -101,15 +96,11 @@ public class UIManage : MonoBehaviour {
                 mG2.SetActive(true);
             }
         }
-
-        //Peter:Shuffle codes around debugging gameoverscreen score
         GameManager.mGameManager.SetHighScore(Score);
-		GameObject.Find("Score").GetComponent<Text>().text = "Final Score:   " + Score.ToString();
-		GameObject.Find("HighScore").GetComponent<Text>().text = "High Score:    " + GameManager.mGameManager.GetHighScore().ToString();
-
+        FScore.text = "Your Score: " + Score.ToString();
+		FhScore.text = "Highest Score: " + GameManager.mGameManager.GetHighScore().ToString();
         Time.timeScale = 0f;
-        GameObject.Find("SettingButton").GetComponent<Button>().enabled = false;
-        
+        GameObject.Find("SettingButton").GetComponent<Button>().enabled = false;      
     }
     public void SetHighscore()
     {
@@ -149,17 +140,10 @@ public class UIManage : MonoBehaviour {
    //         emitter.SetParameter("Decider", 9.90f);
         }
         else
-        {            
+        {        
 			OpenGameOverScreen();
-
-			//Peter:Shuffle codes around debugging gameoverscreen score
-            /*GameManager.mGameManager.SetHighScore(Score);
-            GameObject.Find("Score").GetComponent<Text>().text = "Final Score:         " + Score.ToString();
-			Debug.Log ("Score ========  " + Score);
-            GameObject.Find("HighScore").GetComponent<Text>().text = "High Score:         " + GameManager.mGameManager.GetHighScore().ToString();*/
-
         }
-        SetHighscore();
+   
 
     }
 }
