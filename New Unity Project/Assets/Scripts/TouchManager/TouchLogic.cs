@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -15,8 +16,13 @@ public class TouchLogic {
         Triangle5X3YRight,
         Triangle5X3YLeft,
         TriangleRectangle3DownLeft,
-        TriangleRectangle3UpLeft
+        TriangleRectangle3UpLeft,
 
+
+        Square2x2,
+        Square3x3,
+        Square4x4
+        
         //Add here all shapes of our game
     }
 
@@ -46,6 +52,15 @@ public class TouchLogic {
                 return checkTriangleRectangle3(ref points, true, true);
                 break;
 
+            case Shapes.Square2x2:
+                return checkSquare(ref points, 2);
+                break;
+            case Shapes.Square3x3:
+                return checkSquare(ref points, 3);
+                break;
+            case Shapes.Square4x4:
+                return checkSquare(ref points, 4);
+                break;
             default:
                 Debug.Log("[TouchLogic]Shape name does not exit.");
                 break;
@@ -63,8 +78,8 @@ public class TouchLogic {
     {
         Debug.Log("Start Triangle Check");
 
-        float distanceBetweenPointsX = GameObject.Find("GeneratePoints").GetComponent<PointsManager>().GetDistanceBetweenLinePoints();
-        float distanceBetweenPointsY = GameObject.Find("GeneratePoints").GetComponent<PointsManager>().GetDistanceBetweenLines();
+        float distanceBetweenPointsX = PointsManager.mPointsManager.GetDistanceBetweenLinePoints();
+        float distanceBetweenPointsY = PointsManager.mPointsManager.GetDistanceBetweenLines();
 
         Debug.Log(points.Count);
 
@@ -362,8 +377,8 @@ public class TouchLogic {
     {
         Debug.Log("Start Triangle Check");
 
-        float distanceBetweenPointsX = GameObject.Find("GeneratePoints").GetComponent<PointsManager>().GetDistanceBetweenLinePoints();
-        float distanceBetweenPointsY = GameObject.Find("GeneratePoints").GetComponent<PointsManager>().GetDistanceBetweenLines();
+        float distanceBetweenPointsX = PointsManager.mPointsManager.GetDistanceBetweenLinePoints();
+        float distanceBetweenPointsY = PointsManager.mPointsManager.GetDistanceBetweenLines();
 
         Debug.Log(points.Count);
 
@@ -667,8 +682,8 @@ public class TouchLogic {
 
         Debug.Log("Start Triangle Rectangle Check");
 
-        float distanceBetweenPointsX = GameObject.Find("GeneratePoints").GetComponent<PointsManager>().GetDistanceBetweenLinePoints();
-        float distanceBetweenPointsY = GameObject.Find("GeneratePoints").GetComponent<PointsManager>().GetDistanceBetweenLines();
+        float distanceBetweenPointsX = PointsManager.mPointsManager.GetDistanceBetweenLinePoints();
+        float distanceBetweenPointsY = PointsManager.mPointsManager.GetDistanceBetweenLines();
 
         Debug.Log(points.Count);
 
@@ -966,11 +981,142 @@ public class TouchLogic {
 
     }
 
+    private bool checkSquare(ref List<GameObject> points, uint numSidePoints)
+    {
+        Debug.Log("Start Square Check");
+
+        float distanceBetweenPointsX = PointsManager.mPointsManager.GetDistanceBetweenLinePoints();
+        float distanceBetweenPointsY = PointsManager.mPointsManager.GetDistanceBetweenLines();
+
+        Debug.Log(points.Count);
+
+        //Check number of points
+        if (points.Count != ((4 * (numSidePoints - 1)) + 1))
+        {
+            return false;
+        }
+
+
+        //Check if shape was closed
+        if (points[0].transform.position != points[points.Count - 1].transform.position)
+        {
+            return false;
+        }
+
+        List<List<GameObject>> Lines = new List<List<GameObject>>();
+
+
+        // Debug.Log("points = " + points.Count);
+
+
+        //Divide the points in three lines based on each point Y axis
+        for (int i = 0; i < (points.Count - 1); ++i)
+        {
+
+            for (int j = 0; j < numSidePoints; ++j)
+            {
+                if (Lines.Count == j)
+                {
+                    Lines.Add(new List<GameObject>());
+                    Lines[j].Add(points[i]);
+                    Debug.Log("Line " + j.ToString());
+                    break;
+                }
+                else if (points[i].transform.position.y == Lines[j][0].transform.position.y)
+                {
+                    Lines[j].Add(points[i]);
+                    break;
+                }
+
+            }
+
+        }
+        
+        for (int i = 0; i < numSidePoints;++i)
+        {
+            Lines[i].Sort(sortLine);
+        }
+
+        Lines.OrderByDescending(line => line[0].transform.position.y);
+
+
+
+        //Check num of Points in each line 
+        if (Lines[0].Count != numSidePoints && Lines[(int)(numSidePoints - 1)].Count != numSidePoints)
+        {
+            return false;
+        }
+        if (numSidePoints > 2)
+        {
+            for (int i = 1; i < (int)(numSidePoints - 1); ++i)
+            {
+                if (Lines[i].Count != 2)
+                {
+                    return false;
+                }
+
+            }
+        }
+
+        //Necessary Checks For Y axis
+
+        for(int i = 0; i < (Lines.Count - 1);++i)
+        {
+            if((Lines[i][0].transform.position.y - Lines[i + 1][0].transform.position.y) != distanceBetweenPointsY)
+            {
+                return false;
+            }
+        }
+
+
+        //Necessary Checks For X axis
+
+        //First Line
+
+        for (int i = 0; i < (Lines[0].Count - 1);++i)
+        {
+            if((Lines[0][i + 1].transform.position.x - Lines[0][i].transform.position.x) != distanceBetweenPointsX)
+            {
+                return false;
+            }
+        }
+
+        //Last Line
+        for (int i = 0; i < (Lines[(int)(numSidePoints - 1)].Count - 1); ++i)
+        {
+            if ((Lines[0][i + 1].transform.position.x - Lines[0][i].transform.position.x) != distanceBetweenPointsX)
+            {
+                return false;
+            }
+        }
+
+        if(numSidePoints > 2)
+        {
+            for (int i = 1; i < (Lines[(int)(numSidePoints - 1)].Count - 1); ++i)
+            {
+                if((Lines[i][1].transform.position.x - Lines[i][0].transform.position.x) != (distanceBetweenPointsX * (numSidePoints - 1)))
+                {
+                    return false;
+                }
+
+            }
+
+        }
+
+
+
+        return true;
+
+    }
+
+
 
         //=========================================================================
         //========================  Support Functions  ============================
         //=========================================================================
+   
 
+    //Crescent order 
     private int sortLine(GameObject GO1, GameObject GO2)
     {
 
@@ -1020,6 +1166,7 @@ public class TouchLogic {
         }
     }
 
+    //Crescent order 
     private int sortLineY(GameObject GO1, GameObject GO2)
     {
 
