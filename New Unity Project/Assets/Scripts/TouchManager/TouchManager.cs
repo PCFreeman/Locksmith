@@ -13,6 +13,16 @@ public class TouchManager : MonoBehaviour {
     public GameObject TriangleRectangle3UpLeft;
     public GameObject TriangleRectangle3DownLeft;
 
+    public GameObject Square2x2;
+    public GameObject Square3x3;
+    public GameObject Square4x4;
+
+    public GameObject Rectangle2x3;
+    public GameObject Rectangle3x4;
+    public GameObject Rectangle3x2;
+    public GameObject Rectangle4x3;
+
+
     //Touch Manager 
 
     public static TouchManager mTouchManager = null;
@@ -103,8 +113,17 @@ public class TouchManager : MonoBehaviour {
         mShapes.Add(Triangle5x3Left);
         mShapes.Add(TriangleRectangle3UpLeft);
         mShapes.Add(TriangleRectangle3DownLeft);
-        
-        if(mShapesList.Count == 0)
+
+        mShapes.Add(Square2x2);
+        mShapes.Add(Square3x3);
+        mShapes.Add(Square4x4);
+
+        mShapes.Add(Rectangle2x3);
+        mShapes.Add(Rectangle3x2);
+        mShapes.Add(Rectangle3x4);
+        mShapes.Add(Rectangle4x3);
+
+        if (mShapesList.Count == 0)
         { 
             //Generate List with random shapes
             for (int i = 0; i < NumberOfShapes; ++i)

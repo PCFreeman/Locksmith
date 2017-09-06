@@ -21,8 +21,14 @@ public class TouchLogic {
 
         Square2x2,
         Square3x3,
-        Square4x4
-        
+        Square4x4,
+
+        Rectangle2x3,
+        Rectangle3x2,
+        Rectangle3x4,
+        Rectangle4x3
+
+
         //Add here all shapes of our game
     }
 
@@ -60,6 +66,19 @@ public class TouchLogic {
                 break;
             case Shapes.Square4x4:
                 return checkSquare(ref points, 4);
+                break;
+
+            case Shapes.Rectangle2x3:
+                return checkRectangle(ref points, 2,3);
+                break;
+            case Shapes.Rectangle3x2:
+                return checkRectangle(ref points, 3,2);
+                break;
+            case Shapes.Rectangle3x4:
+                return checkRectangle(ref points, 3, 4 );
+                break;
+            case Shapes.Rectangle4x3:
+                return checkRectangle(ref points, 4, 3);
                 break;
             default:
                 Debug.Log("[TouchLogic]Shape name does not exit.");
@@ -1009,11 +1028,11 @@ public class TouchLogic {
         // Debug.Log("points = " + points.Count);
 
 
-        //Divide the points in three lines based on each point Y axis
+
         for (int i = 0; i < (points.Count - 1); ++i)
         {
 
-            for (int j = 0; j < numSidePoints; ++j)
+            for (int j = 0; j < PointsManager.mPointsManager.numberLines; ++j)
             {
                 if (Lines.Count == j)
                 {
@@ -1092,7 +1111,7 @@ public class TouchLogic {
 
         if(numSidePoints > 2)
         {
-            for (int i = 1; i < (Lines[(int)(numSidePoints - 1)].Count - 1); ++i)
+            for (int i = 1; i < (Lines.Count - 1); ++i)
             {
                 if((Lines[i][1].transform.position.x - Lines[i][0].transform.position.x) != (distanceBetweenPointsX * (numSidePoints - 1)))
                 {
@@ -1109,12 +1128,148 @@ public class TouchLogic {
 
     }
 
+    private bool checkRectangle(ref List<GameObject> points, uint numHorizontalPoints, uint numVerticalPoints)
+    {
+        Debug.Log("Start Square Check");
 
 
-        //=========================================================================
-        //========================  Support Functions  ============================
-        //=========================================================================
-   
+        Debug.Assert(numHorizontalPoints >= 2 && numVerticalPoints >= 2, "[checkRectangle] wrong size!");
+
+
+        float distanceBetweenPointsX = PointsManager.mPointsManager.GetDistanceBetweenLinePoints();
+        float distanceBetweenPointsY = PointsManager.mPointsManager.GetDistanceBetweenLines();
+
+        Debug.Log(points.Count);
+
+        //Check number of points
+        if (points.Count != (((numHorizontalPoints * 2) + ((numVerticalPoints - 2) * 2)) + 1))
+        {
+            return false;
+        }
+
+
+        //Check if shape was closed
+        if (points[0].transform.position != points[points.Count - 1].transform.position)
+        {
+            return false;
+        }
+
+        List<List<GameObject>> Lines = new List<List<GameObject>>();
+
+
+        // Debug.Log("points = " + points.Count);
+
+
+        //Add points to Lines list
+        for (int i = 0; i < (points.Count - 1); ++i)
+        {
+
+            for (int j = 0; j < PointsManager.mPointsManager.numberLines; ++j)
+            {
+                if (Lines.Count == j)
+                {
+                    Lines.Add(new List<GameObject>());
+                    Lines[j].Add(points[i]);
+                    Debug.Log("Line " + j.ToString());
+                    break;
+                }
+                else if (points[i].transform.position.y == Lines[j][0].transform.position.y)
+                {
+                    Lines[j].Add(points[i]);
+                    break;
+                }
+
+            }
+
+        }
+
+        if(Lines.Count != numVerticalPoints)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < numVerticalPoints; ++i)
+        {
+            Lines[i].Sort(sortLine);
+        }
+
+        Lines.OrderByDescending(line => line[0].transform.position.y);
+
+
+
+        //Check num of Points in each line 
+        if (Lines[0].Count != numHorizontalPoints && Lines[(int)(numVerticalPoints - 1)].Count != numHorizontalPoints)
+        {
+            return false;
+        }
+        if (numVerticalPoints > 2)
+        {
+            for (int i = 1; i < (int)(numVerticalPoints - 1); ++i)
+            {
+                if (Lines[i].Count != 2)
+                {
+                    return false;
+                }
+
+            }
+        }
+
+        //Necessary Checks For Y axis
+
+        for (int i = 0; i < (Lines.Count - 1); ++i)
+        {
+            if ((Lines[i][0].transform.position.y - Lines[i + 1][0].transform.position.y) != distanceBetweenPointsY)
+            {
+                return false;
+            }
+        }
+
+
+        //Necessary Checks For X axis
+
+        //First Line
+
+        for (int i = 0; i < (Lines[0].Count - 1); ++i)
+        {
+            if ((Lines[0][i + 1].transform.position.x - Lines[0][i].transform.position.x) != distanceBetweenPointsX)
+            {
+                return false;
+            }
+        }
+
+        //Last Line
+        for (int i = 0; i < (Lines[(int)(numVerticalPoints - 1)].Count - 1); ++i)
+        {
+            if ((Lines[0][i + 1].transform.position.x - Lines[0][i].transform.position.x) != distanceBetweenPointsX)
+            {
+                return false;
+            }
+        }
+
+        if (numVerticalPoints > 2)
+        {
+            for (int i = 1; i < (Lines.Count - 1); ++i)
+            {
+                if ((Lines[i][1].transform.position.x - Lines[i][0].transform.position.x) != (distanceBetweenPointsX * (numHorizontalPoints - 1)))
+                {
+                    return false;
+                }
+
+            }
+
+        }
+
+
+
+        return true;
+
+    }
+
+
+    //=========================================================================
+    //========================  Support Functions  ============================
+    //=========================================================================
+
 
     //Crescent order 
     private int sortLine(GameObject GO1, GameObject GO2)
