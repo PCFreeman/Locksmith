@@ -416,7 +416,9 @@ public class AnimationMagager : MonoBehaviour
                     //ASSERT
                     break;
             }
+
         }
+        digits2.Clear();
         }
 
     public void ScoreAnimation(ref GameObject point, ref GameObject currentshape)
@@ -751,7 +753,7 @@ public class AnimationMagager : MonoBehaviour
 
         }
 
-
+        digits.Clear();
 
         //if (m1 == 0 && m2 == 0)
         //{
