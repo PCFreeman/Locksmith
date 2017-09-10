@@ -12,12 +12,16 @@ public class DrawTouch : MonoBehaviour {
     private Plane objectPlane;
     private GameObject coll; // line collider
 
+    //sound controller
+    FMODUnity.StudioEventEmitter emitter;
+
     private bool LastShapeCorect;
 
     public void Awake()
     {
         coll = (GameObject)Instantiate(lineColliderPrefab, new Vector3(5000.0f, 0.0f, 0.0f), Quaternion.identity);
-
+        
+        
     }
 
     public void Initialize()
@@ -25,6 +29,7 @@ public class DrawTouch : MonoBehaviour {
         LastShapeCorect = false;
         //pointsSelected = new List<GameObject>();
         objectPlane = new Plane(Camera.main.transform.forward * -1, this.transform.position);
+
         
     }
 
@@ -164,6 +169,8 @@ public class DrawTouch : MonoBehaviour {
                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 0.0f, 0.0f, 1.0f);
                }
 
+                
+               
                 LastShapeCorect = true;
 
                 //Add points to score
@@ -188,16 +195,16 @@ public class DrawTouch : MonoBehaviour {
 
             }
            else
-           {
-               Debug.Log("Wrong Shape");
+            {
+                Debug.Log("Wrong Shape");
 
-               //Destroi the line , may add some stuff in future to make player know that made mistake
-               //Destroy(thisLine);
-               Debug.Log("GOs 2 size = " + TouchManager.mTouchManager.pointsSelected.Count.ToString());
-               foreach (GameObject GO in TouchManager.mTouchManager.pointsSelected)
-               {
-                   GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-               }
+                //Destroi the line , may add some stuff in future to make player know that made mistake
+                //Destroy(thisLine);
+                Debug.Log("GOs 2 size = " + TouchManager.mTouchManager.pointsSelected.Count.ToString());
+                foreach (GameObject GO in TouchManager.mTouchManager.pointsSelected)
+                {
+                    GO.GetComponent<SpriteRenderer>().color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+                }
 
                 //ResetCollider();
 
